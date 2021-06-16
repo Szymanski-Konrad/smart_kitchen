@@ -20,7 +20,7 @@ jobs:
         run: flutter test --no-pub --coverage --test-randomize-ordering-seed random
 
       - name: Build Android app
-        run: flutter build apk
+        run: flutter build apk -t lib/main_development.dart
 
       - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v1.1.1

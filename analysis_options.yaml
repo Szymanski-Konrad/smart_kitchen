@@ -1,4 +1,15 @@
 include: package:very_good_analysis/analysis_options.yaml
+analyzer: 
+  exclude: 
+    - "**.g.dart"
+    - "**.freezed.dart"
+
 linter:
   rules:
+    imlicit_dynamic_parameter: false
     public_member_api_docs: false
+    lines_longer_than_80_chars: false
+    use_key_in_widget_constructors: false
+    unawaited_futures: false
+    use_build_context_synchronously: false
+    

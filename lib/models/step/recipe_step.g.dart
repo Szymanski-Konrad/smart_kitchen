@@ -56,23 +56,22 @@ class RecipeStepAdapter extends TypeAdapter<_$_RecipeStep> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RecipeStep _$_$_RecipeStepFromJson(Map<String, dynamic> json) {
-  return _$_RecipeStep(
-    id: json['id'] as String,
-    recipeId: json['recipeId'] as String,
-    content: json['content'] as String,
-    timers: (json['timers'] as Map<String, dynamic>?)?.map(
-          (k, e) => MapEntry(k, e as int),
-        ) ??
-        {},
-    ingredients: (json['ingredients'] as List<dynamic>?)
-            ?.map((e) => e as String)
-            .toList() ??
-        [],
-  );
-}
+_$_RecipeStep _$$_RecipeStepFromJson(Map<String, dynamic> json) =>
+    _$_RecipeStep(
+      id: json['id'] as String,
+      recipeId: json['recipeId'] as String,
+      content: json['content'] as String,
+      timers: (json['timers'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as int),
+          ) ??
+          const <String, int>{},
+      ingredients: (json['ingredients'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
+    );
 
-Map<String, dynamic> _$_$_RecipeStepToJson(_$_RecipeStep instance) =>
+Map<String, dynamic> _$$_RecipeStepToJson(_$_RecipeStep instance) =>
     <String, dynamic>{
       'id': instance.id,
       'recipeId': instance.recipeId,

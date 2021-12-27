@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'recipe_step.dart';
 
@@ -35,7 +36,7 @@ class _$RecipeStepTearOff {
     );
   }
 
-  RecipeStep fromJson(Map<String, Object> json) {
+  RecipeStep fromJson(Map<String, Object?> json) {
     return RecipeStep.fromJson(json);
   }
 }
@@ -185,7 +186,7 @@ class _$_RecipeStep implements _RecipeStep {
       @HiveField(4) this.ingredients = const <String>[]});
 
   factory _$_RecipeStep.fromJson(Map<String, dynamic> json) =>
-      _$_$_RecipeStepFromJson(json);
+      _$$_RecipeStepFromJson(json);
 
   @override
   @HiveField(0)
@@ -196,11 +197,11 @@ class _$_RecipeStep implements _RecipeStep {
   @override
   @HiveField(2)
   final String content;
-  @JsonKey(defaultValue: const <String, int>{})
+  @JsonKey()
   @override
   @HiveField(3)
   final Map<String, int> timers;
-  @JsonKey(defaultValue: const <String>[])
+  @JsonKey()
   @override
   @HiveField(4)
   final List<String> ingredients;
@@ -213,30 +214,24 @@ class _$_RecipeStep implements _RecipeStep {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RecipeStep &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.recipeId, recipeId) ||
-                const DeepCollectionEquality()
-                    .equals(other.recipeId, recipeId)) &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.timers, timers) ||
-                const DeepCollectionEquality().equals(other.timers, timers)) &&
-            (identical(other.ingredients, ingredients) ||
-                const DeepCollectionEquality()
-                    .equals(other.ingredients, ingredients)));
+        (other.runtimeType == runtimeType &&
+            other is _RecipeStep &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.recipeId, recipeId) &&
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality().equals(other.timers, timers) &&
+            const DeepCollectionEquality()
+                .equals(other.ingredients, ingredients));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(recipeId) ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(timers) ^
-      const DeepCollectionEquality().hash(ingredients);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(recipeId),
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(timers),
+      const DeepCollectionEquality().hash(ingredients));
 
   @JsonKey(ignore: true)
   @override
@@ -245,7 +240,7 @@ class _$_RecipeStep implements _RecipeStep {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_RecipeStepToJson(this);
+    return _$$_RecipeStepToJson(this);
   }
 }
 
@@ -262,19 +257,19 @@ abstract class _RecipeStep implements RecipeStep {
 
   @override
   @HiveField(0)
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @HiveField(1)
-  String get recipeId => throw _privateConstructorUsedError;
+  String get recipeId;
   @override
   @HiveField(2)
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
   @HiveField(3)
-  Map<String, int> get timers => throw _privateConstructorUsedError;
+  Map<String, int> get timers;
   @override
   @HiveField(4)
-  List<String> get ingredients => throw _privateConstructorUsedError;
+  List<String> get ingredients;
   @override
   @JsonKey(ignore: true)
   _$RecipeStepCopyWith<_RecipeStep> get copyWith =>

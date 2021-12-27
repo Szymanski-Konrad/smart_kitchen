@@ -48,7 +48,8 @@ abstract class Dialogs {
               dense: true,
               leading: const Icon(Icons.directions_walk_outlined),
               title: Text(
-                  '${(kcal * 10000 / 400).toStringAsFixed(0)} ${Strings.steps}'),
+                '${(kcal * 10000 / 400).toStringAsFixed(0)} ${Strings.steps}',
+              ),
             ),
           ],
         )

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_kitchen/app/repositories/auth_repository.dart';
 import 'package:smart_kitchen/app/repositories/firestore_repository.dart';
@@ -52,7 +51,7 @@ class SignUpPage extends StatelessWidget {
                 Text(
                   state.errorMessage ?? 'ERROR',
                   style: const TextStyle(
-                    color: ColorPalette.errorColor,
+                    // color: ColorPalette.errorColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

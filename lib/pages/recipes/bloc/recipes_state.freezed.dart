@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'recipes_state.dart';
 
@@ -158,7 +159,7 @@ class _$_RecipesState implements _RecipesState {
   final List<Recipe> recipes;
   @override
   final String? searchString;
-  @JsonKey(defaultValue: Category.breakfast)
+  @JsonKey()
   @override
   final Category selectedCategory;
   @override
@@ -172,28 +173,24 @@ class _$_RecipesState implements _RecipesState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RecipesState &&
-            (identical(other.recipes, recipes) ||
-                const DeepCollectionEquality()
-                    .equals(other.recipes, recipes)) &&
-            (identical(other.searchString, searchString) ||
-                const DeepCollectionEquality()
-                    .equals(other.searchString, searchString)) &&
-            (identical(other.selectedCategory, selectedCategory) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedCategory, selectedCategory)) &&
-            (identical(other.currentUserId, currentUserId) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentUserId, currentUserId)));
+        (other.runtimeType == runtimeType &&
+            other is _RecipesState &&
+            const DeepCollectionEquality().equals(other.recipes, recipes) &&
+            const DeepCollectionEquality()
+                .equals(other.searchString, searchString) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedCategory, selectedCategory) &&
+            const DeepCollectionEquality()
+                .equals(other.currentUserId, currentUserId));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(recipes) ^
-      const DeepCollectionEquality().hash(searchString) ^
-      const DeepCollectionEquality().hash(selectedCategory) ^
-      const DeepCollectionEquality().hash(currentUserId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(recipes),
+      const DeepCollectionEquality().hash(searchString),
+      const DeepCollectionEquality().hash(selectedCategory),
+      const DeepCollectionEquality().hash(currentUserId));
 
   @JsonKey(ignore: true)
   @override
@@ -209,13 +206,13 @@ abstract class _RecipesState implements RecipesState {
       String? currentUserId}) = _$_RecipesState;
 
   @override
-  List<Recipe> get recipes => throw _privateConstructorUsedError;
+  List<Recipe> get recipes;
   @override
-  String? get searchString => throw _privateConstructorUsedError;
+  String? get searchString;
   @override
-  Category get selectedCategory => throw _privateConstructorUsedError;
+  Category get selectedCategory;
   @override
-  String? get currentUserId => throw _privateConstructorUsedError;
+  String? get currentUserId;
   @override
   @JsonKey(ignore: true)
   _$RecipesStateCopyWith<_RecipesState> get copyWith =>

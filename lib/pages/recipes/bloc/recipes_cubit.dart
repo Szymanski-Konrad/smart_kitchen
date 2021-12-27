@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_kitchen/app/global_blocs/global_cubit.dart';
 import 'package:smart_kitchen/app/navigation/navigation.dart';
@@ -13,6 +15,7 @@ class RecipesCubit extends GlobalCubit<RecipesState> {
       : super(RecipesState.initial(authRepository.getUserId()));
 
   final AuthRepository authRepository;
+  final random = Random();
 
   void changeCategory(Category category) {
     emit(state.copyWith(selectedCategory: category));
@@ -42,5 +45,22 @@ class RecipesCubit extends GlobalCubit<RecipesState> {
   Future<void> createNewRecipe() async {
     await Navigation.instance.push(SharedRoutes.newRecipe);
     await fetchRecipes();
+  }
+
+  /// Check if can shuffle [count] number of recipes
+  bool randomRecipesEnabled(int count) => state.recipes.length >= count;
+
+  /// Return [count] number of random recipes
+  List<Recipe> randomRecipes(int count) {
+    final randomRecipes = <Recipe>[];
+    while (randomRecipes.length < count) {
+      final index = random.nextInt(state.recipes.length);
+      final recipe = state.recipes[index];
+      if (!randomRecipes.contains(recipe)) {
+        randomRecipes.add(recipe);
+      }
+    }
+
+    return randomRecipes;
   }
 }

@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'cooking_state.dart';
 
@@ -238,16 +239,16 @@ class _$_CookingState implements _CookingState {
   final DateTime startTime;
   @override
   final DateTime endTime;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int step;
-  @JsonKey(defaultValue: const <String, int>{})
+  @JsonKey()
   @override
   final Map<String, int> timers;
-  @JsonKey(defaultValue: CookingStatus.prepare)
+  @JsonKey()
   @override
   final CookingStatus status;
-  @JsonKey(defaultValue: const <bool>[])
+  @JsonKey()
   @override
   final List<bool> checkedList;
 
@@ -259,39 +260,30 @@ class _$_CookingState implements _CookingState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CookingState &&
-            (identical(other.recipe, recipe) ||
-                const DeepCollectionEquality().equals(other.recipe, recipe)) &&
-            (identical(other.scale, scale) ||
-                const DeepCollectionEquality().equals(other.scale, scale)) &&
-            (identical(other.startTime, startTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.startTime, startTime)) &&
-            (identical(other.endTime, endTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.endTime, endTime)) &&
-            (identical(other.step, step) ||
-                const DeepCollectionEquality().equals(other.step, step)) &&
-            (identical(other.timers, timers) ||
-                const DeepCollectionEquality().equals(other.timers, timers)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.checkedList, checkedList) ||
-                const DeepCollectionEquality()
-                    .equals(other.checkedList, checkedList)));
+        (other.runtimeType == runtimeType &&
+            other is _CookingState &&
+            const DeepCollectionEquality().equals(other.recipe, recipe) &&
+            const DeepCollectionEquality().equals(other.scale, scale) &&
+            const DeepCollectionEquality().equals(other.startTime, startTime) &&
+            const DeepCollectionEquality().equals(other.endTime, endTime) &&
+            const DeepCollectionEquality().equals(other.step, step) &&
+            const DeepCollectionEquality().equals(other.timers, timers) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.checkedList, checkedList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(recipe) ^
-      const DeepCollectionEquality().hash(scale) ^
-      const DeepCollectionEquality().hash(startTime) ^
-      const DeepCollectionEquality().hash(endTime) ^
-      const DeepCollectionEquality().hash(step) ^
-      const DeepCollectionEquality().hash(timers) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(checkedList);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(recipe),
+      const DeepCollectionEquality().hash(scale),
+      const DeepCollectionEquality().hash(startTime),
+      const DeepCollectionEquality().hash(endTime),
+      const DeepCollectionEquality().hash(step),
+      const DeepCollectionEquality().hash(timers),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(checkedList));
 
   @JsonKey(ignore: true)
   @override
@@ -311,21 +303,21 @@ abstract class _CookingState implements CookingState {
       List<bool> checkedList}) = _$_CookingState;
 
   @override
-  Recipe get recipe => throw _privateConstructorUsedError;
+  Recipe get recipe;
   @override
-  double get scale => throw _privateConstructorUsedError;
+  double get scale;
   @override
-  DateTime get startTime => throw _privateConstructorUsedError;
+  DateTime get startTime;
   @override
-  DateTime get endTime => throw _privateConstructorUsedError;
+  DateTime get endTime;
   @override
-  int get step => throw _privateConstructorUsedError;
+  int get step;
   @override
-  Map<String, int> get timers => throw _privateConstructorUsedError;
+  Map<String, int> get timers;
   @override
-  CookingStatus get status => throw _privateConstructorUsedError;
+  CookingStatus get status;
   @override
-  List<bool> get checkedList => throw _privateConstructorUsedError;
+  List<bool> get checkedList;
   @override
   @JsonKey(ignore: true)
   _$CookingStateCopyWith<_CookingState> get copyWith =>

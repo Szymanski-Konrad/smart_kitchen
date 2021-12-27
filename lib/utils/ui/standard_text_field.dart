@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_kitchen/app/resources/text_styles.dart';
 
 class StandardTextField extends StatefulWidget {
   const StandardTextField({
@@ -46,6 +47,7 @@ class _StandardTextFieldState extends State<StandardTextField> {
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
+      style: TextStyles.textField,
       onChanged: (value) {
         if (widget.onChanged != null) {
           widget.onChanged!(value);

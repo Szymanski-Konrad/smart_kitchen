@@ -32,6 +32,7 @@ class SignInPage extends StatelessWidget {
     AuthCubit cubit,
     AuthState state,
   ) {
+    final errorMessage = state.errorMessage;
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -48,10 +49,12 @@ class SignInPage extends StatelessWidget {
                 Strings.appTitle,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white70,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+              if (errorMessage != null) Text(errorMessage),
               const SizedBox(height: 32),
               AuthTextField(
                 initialValue: state.email,

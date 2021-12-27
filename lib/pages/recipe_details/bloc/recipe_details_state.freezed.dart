@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'recipe_details_state.dart';
 
@@ -264,7 +265,7 @@ class _$_RecipeDetailsState implements _RecipeDetailsState {
   final double? protein;
   @override
   final double? salt;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int calculatedIngredients;
 
@@ -276,41 +277,32 @@ class _$_RecipeDetailsState implements _RecipeDetailsState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RecipeDetailsState &&
-            (identical(other.recipe, recipe) ||
-                const DeepCollectionEquality().equals(other.recipe, recipe)) &&
-            (identical(other.scale, scale) ||
-                const DeepCollectionEquality().equals(other.scale, scale)) &&
-            (identical(other.stars, stars) ||
-                const DeepCollectionEquality().equals(other.stars, stars)) &&
-            (identical(other.kcal, kcal) ||
-                const DeepCollectionEquality().equals(other.kcal, kcal)) &&
-            (identical(other.fat, fat) ||
-                const DeepCollectionEquality().equals(other.fat, fat)) &&
-            (identical(other.carbo, carbo) ||
-                const DeepCollectionEquality().equals(other.carbo, carbo)) &&
-            (identical(other.protein, protein) ||
-                const DeepCollectionEquality()
-                    .equals(other.protein, protein)) &&
-            (identical(other.salt, salt) ||
-                const DeepCollectionEquality().equals(other.salt, salt)) &&
-            (identical(other.calculatedIngredients, calculatedIngredients) ||
-                const DeepCollectionEquality().equals(
-                    other.calculatedIngredients, calculatedIngredients)));
+        (other.runtimeType == runtimeType &&
+            other is _RecipeDetailsState &&
+            const DeepCollectionEquality().equals(other.recipe, recipe) &&
+            const DeepCollectionEquality().equals(other.scale, scale) &&
+            const DeepCollectionEquality().equals(other.stars, stars) &&
+            const DeepCollectionEquality().equals(other.kcal, kcal) &&
+            const DeepCollectionEquality().equals(other.fat, fat) &&
+            const DeepCollectionEquality().equals(other.carbo, carbo) &&
+            const DeepCollectionEquality().equals(other.protein, protein) &&
+            const DeepCollectionEquality().equals(other.salt, salt) &&
+            const DeepCollectionEquality()
+                .equals(other.calculatedIngredients, calculatedIngredients));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(recipe) ^
-      const DeepCollectionEquality().hash(scale) ^
-      const DeepCollectionEquality().hash(stars) ^
-      const DeepCollectionEquality().hash(kcal) ^
-      const DeepCollectionEquality().hash(fat) ^
-      const DeepCollectionEquality().hash(carbo) ^
-      const DeepCollectionEquality().hash(protein) ^
-      const DeepCollectionEquality().hash(salt) ^
-      const DeepCollectionEquality().hash(calculatedIngredients);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(recipe),
+      const DeepCollectionEquality().hash(scale),
+      const DeepCollectionEquality().hash(stars),
+      const DeepCollectionEquality().hash(kcal),
+      const DeepCollectionEquality().hash(fat),
+      const DeepCollectionEquality().hash(carbo),
+      const DeepCollectionEquality().hash(protein),
+      const DeepCollectionEquality().hash(salt),
+      const DeepCollectionEquality().hash(calculatedIngredients));
 
   @JsonKey(ignore: true)
   @override
@@ -331,23 +323,23 @@ abstract class _RecipeDetailsState implements RecipeDetailsState {
       int calculatedIngredients}) = _$_RecipeDetailsState;
 
   @override
-  Recipe get recipe => throw _privateConstructorUsedError;
+  Recipe get recipe;
   @override
-  double get scale => throw _privateConstructorUsedError;
+  double get scale;
   @override
-  double get stars => throw _privateConstructorUsedError;
+  double get stars;
   @override
-  double? get kcal => throw _privateConstructorUsedError;
+  double? get kcal;
   @override
-  double? get fat => throw _privateConstructorUsedError;
+  double? get fat;
   @override
-  double? get carbo => throw _privateConstructorUsedError;
+  double? get carbo;
   @override
-  double? get protein => throw _privateConstructorUsedError;
+  double? get protein;
   @override
-  double? get salt => throw _privateConstructorUsedError;
+  double? get salt;
   @override
-  int get calculatedIngredients => throw _privateConstructorUsedError;
+  int get calculatedIngredients;
   @override
   @JsonKey(ignore: true)
   _$RecipeDetailsStateCopyWith<_RecipeDetailsState> get copyWith =>

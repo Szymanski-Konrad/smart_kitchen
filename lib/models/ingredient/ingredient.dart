@@ -24,11 +24,12 @@ class Ingredient with _$Ingredient {
     double? amount,
   }) {
     return Ingredient(
-        id: const Uuid().v1(),
-        recipeId: recipeId,
-        name: name,
-        unit: unit,
-        amount: amount);
+      id: const Uuid().v1(),
+      recipeId: recipeId,
+      name: name,
+      unit: unit,
+      amount: amount,
+    );
   }
 
   factory Ingredient.resolved(IngredientMetadata metadata, String recipeId) {

@@ -67,27 +67,34 @@ class CookingCubit extends Cubit<CookingState> {
   }
 
   void endPreparation() {
-    emit(state.copyWith(
-      status: CookingStatus.steps,
-      step: 0,
-      checkedList: List.filled(state.recipe.steps[0].ingredients.length, false),
-    ));
+    emit(
+      state.copyWith(
+        status: CookingStatus.steps,
+        step: 0,
+        checkedList:
+            List.filled(state.recipe.steps[0].ingredients.length, false),
+      ),
+    );
   }
 
   void nextStep() {
     final nextStep = state.step + 1;
-    emit(state.copyWith(
-      step: nextStep,
-      checkedList:
-          List.filled(state.recipe.steps[nextStep].ingredients.length, false),
-    ));
+    emit(
+      state.copyWith(
+        step: nextStep,
+        checkedList:
+            List.filled(state.recipe.steps[nextStep].ingredients.length, false),
+      ),
+    );
   }
 
   void endSteps() {
-    emit(state.copyWith(
-      status: CookingStatus.summary,
-      endTime: DateTime.now(),
-    ));
+    emit(
+      state.copyWith(
+        status: CookingStatus.summary,
+        endTime: DateTime.now(),
+      ),
+    );
   }
 
   void closeCooking() {

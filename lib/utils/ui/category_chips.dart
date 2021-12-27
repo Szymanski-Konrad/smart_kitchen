@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:smart_kitchen/app/resources/color_palette.dart';
+import 'package:smart_kitchen/app/resources/dimensions.dart';
+import 'package:smart_kitchen/app/resources/paddings.dart';
+import 'package:smart_kitchen/app/resources/spacings.dart';
+import 'package:smart_kitchen/app/resources/text_styles.dart';
 import 'package:smart_kitchen/models/recipe/category.dart';
 
 class CategoryChips extends StatelessWidget {
-  const CategoryChips(
-      {Key? key,
-      required this.selectedCategory,
-      required this.onCategoryChanged})
-      : super(key: key);
+  const CategoryChips({
+    Key? key,
+    required this.selectedCategory,
+    required this.onCategoryChanged,
+  }) : super(key: key);
 
   final Category selectedCategory;
   final Function(Category) onCategoryChanged;
@@ -15,20 +19,19 @@ class CategoryChips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
-      child: ListView.builder(
+      height: 70,
+      child: ListView.separated(
+        padding: Paddings.horizontal16,
+        separatorBuilder: (context, index) => Spacings.s16,
         scrollDirection: Axis.horizontal,
         itemCount: Category.values.length,
         itemBuilder: (context, index) {
           final category = Category.values[index];
           return GestureDetector(
             onTap: () => onCategoryChanged(Category.values[index]),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: CategoryChip(
-                category: category,
-                isSelected: category == selectedCategory,
-              ),
+            child: CategoryChip(
+              category: category,
+              isSelected: category == selectedCategory,
             ),
           );
         },
@@ -50,13 +53,16 @@ class CategoryChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      backgroundColor: isSelected ? ColorPalette.accent : Colors.transparent,
-      label: Text(category.name),
-      avatar: isSelected
-          ? CircleAvatar(
-              child: Text(category.name[0].toUpperCase()),
-            )
-          : null,
+      labelPadding: Paddings.chipPadding,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Dimensions.d8),
+      ),
+      backgroundColor: isSelected ? ColorPalette.green : ColorPalette.wheat,
+      label: Text(
+        category.name,
+        style: isSelected ? TextStyles.chipItemSelected : TextStyles.chipItem,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }

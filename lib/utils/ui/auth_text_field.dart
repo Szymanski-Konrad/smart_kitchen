@@ -52,7 +52,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
           ),
           child: Icon(
             widget.iconData,
-            color: ColorPalette.buttons,
+            // color: ColorPalette.yellowRed,
           ),
         ),
         border: OutlineInputBorder(

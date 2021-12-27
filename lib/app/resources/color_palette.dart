@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 abstract class ColorPalette {
   ColorPalette._();
 
-  static const primary = Color(0xFFEE6C4D); // Primary - space
-  static const buttons = Color(0xFF293241); // Buttons - yellowRed
-  static const accent = Color(0xFFE0FBFC); // Accent - darkCyan
-  static const background = Color(0xFF98C1D9); // Backgroud - sapphire
-  static const dialogs = Color(0xFF417CA6); // Dialogs - grape
-  static const errorColor = Color(0xFFD13C06); // Errors
-  static const text = Color(0xFF3D5A80);
+  // redesign
+  static const black = Color(0xFF050504);
+  static const grey = Color(0xFF575655);
+  static const lightBlack = Color(0xFFACB0BD);
+  static const white = Color(0xFFFFFFFF);
+  static const wheat = Color(0xFFF5DFBB);
+  static const pumpkin = Color(0xFFF3752B);
+  static const yellow = Color(0xFFFBB13C);
+  static const green = Color(0xFF4EA699);
+  static const blue = Color(0xFF140D4F);
+  static const lightBlue = Color(0xFFF2F4F8);
 
-  static MaterialColor primarySwatch = MaterialColor(buttons.value, swatch);
+  // static MaterialColor primarySwatch = MaterialColor(yellowRed.value, swatch);
 
-  static Map<int, Color> swatch = {
-    50: buttons.withOpacity(0.1),
-    100: buttons.withOpacity(0.2),
-    200: buttons.withOpacity(0.3),
-    300: buttons.withOpacity(0.4),
-    400: buttons.withOpacity(0.5),
-    500: buttons.withOpacity(0.6),
-    600: buttons.withOpacity(0.7),
-    700: buttons.withOpacity(0.8),
-    800: buttons.withOpacity(0.9),
-    900: buttons.withOpacity(1),
-  };
+  // static Map<int, Color> swatch = {
+  //   50: yellowRed.withOpacity(0.1),
+  //   100: yellowRed.withOpacity(0.2),
+  //   200: yellowRed.withOpacity(0.3),
+  //   300: yellowRed.withOpacity(0.4),
+  //   400: yellowRed.withOpacity(0.5),
+  //   500: yellowRed.withOpacity(0.6),
+  //   600: yellowRed.withOpacity(0.7),
+  //   700: yellowRed.withOpacity(0.8),
+  //   800: yellowRed.withOpacity(0.9),
+  //   900: yellowRed.withOpacity(1),
+  // };
 }

@@ -71,29 +71,27 @@ class RecipeAdapter extends TypeAdapter<_$_Recipe> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Recipe _$_$_RecipeFromJson(Map<String, dynamic> json) {
-  return _$_Recipe(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    category: _$enumDecode(_$CategoryEnumMap, json['category']),
-    imagePath: json['imagePath'] as String?,
-    notes: json['notes'] as String?,
-    userId: json['userId'] as String,
-    rating: (json['rating'] as num?)?.toDouble() ?? 0.0,
-    votes: (json['votes'] as Map<String, dynamic>?)?.map(
-          (k, e) => MapEntry(k, (e as num).toDouble()),
-        ) ??
-        {},
-    ingredients: (json['ingredients'] as List<dynamic>)
-        .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    steps: (json['steps'] as List<dynamic>)
-        .map((e) => RecipeStep.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+_$_Recipe _$$_RecipeFromJson(Map<String, dynamic> json) => _$_Recipe(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      category: $enumDecode(_$CategoryEnumMap, json['category']),
+      imagePath: json['imagePath'] as String?,
+      notes: json['notes'] as String?,
+      userId: json['userId'] as String,
+      rating: (json['rating'] as num?)?.toDouble() ?? 0.0,
+      votes: (json['votes'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, (e as num).toDouble()),
+          ) ??
+          const <String, double>{},
+      ingredients: (json['ingredients'] as List<dynamic>)
+          .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      steps: (json['steps'] as List<dynamic>)
+          .map((e) => RecipeStep.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
-Map<String, dynamic> _$_$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
+Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'category': _$CategoryEnumMap[instance.category],
@@ -105,32 +103,6 @@ Map<String, dynamic> _$_$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
       'ingredients': instance.ingredients,
       'steps': instance.steps,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$CategoryEnumMap = {
   Category.breakfast: 'breakfast',

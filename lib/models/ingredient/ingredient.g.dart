@@ -56,17 +56,16 @@ class IngredientAdapter extends TypeAdapter<_$_Ingredient> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Ingredient _$_$_IngredientFromJson(Map<String, dynamic> json) {
-  return _$_Ingredient(
-    id: json['id'] as String,
-    recipeId: json['recipeId'] as String,
-    name: json['name'] as String,
-    unit: json['unit'] as String?,
-    amount: (json['amount'] as num?)?.toDouble(),
-  );
-}
+_$_Ingredient _$$_IngredientFromJson(Map<String, dynamic> json) =>
+    _$_Ingredient(
+      id: json['id'] as String,
+      recipeId: json['recipeId'] as String,
+      name: json['name'] as String,
+      unit: json['unit'] as String?,
+      amount: (json['amount'] as num?)?.toDouble(),
+    );
 
-Map<String, dynamic> _$_$_IngredientToJson(_$_Ingredient instance) =>
+Map<String, dynamic> _$$_IngredientToJson(_$_Ingredient instance) =>
     <String, dynamic>{
       'id': instance.id,
       'recipeId': instance.recipeId,

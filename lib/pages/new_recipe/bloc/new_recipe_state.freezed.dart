@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'new_recipe_state.dart';
 
@@ -290,29 +291,29 @@ class _$_NewRecipeState implements _NewRecipeState {
   final String uid;
   @override
   final String name;
-  @JsonKey(defaultValue: Category.notAssigned)
+  @JsonKey()
   @override
   final Category category;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String imagePath;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String notes;
-  @JsonKey(defaultValue: 0.0)
+  @JsonKey()
   @override
   final double rating;
-  @JsonKey(defaultValue: const <String, double>{})
+  @JsonKey()
   @override
   final Map<String, double> votes;
   @override
   final List<Ingredient> ingredients;
   @override
   final List<RecipeStep> steps;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isSaving;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isEditing;
 
@@ -324,53 +325,38 @@ class _$_NewRecipeState implements _NewRecipeState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _NewRecipeState &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.uid, uid) ||
-                const DeepCollectionEquality().equals(other.uid, uid)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.category, category) ||
-                const DeepCollectionEquality()
-                    .equals(other.category, category)) &&
-            (identical(other.imagePath, imagePath) ||
-                const DeepCollectionEquality()
-                    .equals(other.imagePath, imagePath)) &&
-            (identical(other.notes, notes) ||
-                const DeepCollectionEquality().equals(other.notes, notes)) &&
-            (identical(other.rating, rating) ||
-                const DeepCollectionEquality().equals(other.rating, rating)) &&
-            (identical(other.votes, votes) ||
-                const DeepCollectionEquality().equals(other.votes, votes)) &&
-            (identical(other.ingredients, ingredients) ||
-                const DeepCollectionEquality()
-                    .equals(other.ingredients, ingredients)) &&
-            (identical(other.steps, steps) ||
-                const DeepCollectionEquality().equals(other.steps, steps)) &&
-            (identical(other.isSaving, isSaving) ||
-                const DeepCollectionEquality()
-                    .equals(other.isSaving, isSaving)) &&
-            (identical(other.isEditing, isEditing) ||
-                const DeepCollectionEquality()
-                    .equals(other.isEditing, isEditing)));
+        (other.runtimeType == runtimeType &&
+            other is _NewRecipeState &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other.imagePath, imagePath) &&
+            const DeepCollectionEquality().equals(other.notes, notes) &&
+            const DeepCollectionEquality().equals(other.rating, rating) &&
+            const DeepCollectionEquality().equals(other.votes, votes) &&
+            const DeepCollectionEquality()
+                .equals(other.ingredients, ingredients) &&
+            const DeepCollectionEquality().equals(other.steps, steps) &&
+            const DeepCollectionEquality().equals(other.isSaving, isSaving) &&
+            const DeepCollectionEquality().equals(other.isEditing, isEditing));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(uid) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(category) ^
-      const DeepCollectionEquality().hash(imagePath) ^
-      const DeepCollectionEquality().hash(notes) ^
-      const DeepCollectionEquality().hash(rating) ^
-      const DeepCollectionEquality().hash(votes) ^
-      const DeepCollectionEquality().hash(ingredients) ^
-      const DeepCollectionEquality().hash(steps) ^
-      const DeepCollectionEquality().hash(isSaving) ^
-      const DeepCollectionEquality().hash(isEditing);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(imagePath),
+      const DeepCollectionEquality().hash(notes),
+      const DeepCollectionEquality().hash(rating),
+      const DeepCollectionEquality().hash(votes),
+      const DeepCollectionEquality().hash(ingredients),
+      const DeepCollectionEquality().hash(steps),
+      const DeepCollectionEquality().hash(isSaving),
+      const DeepCollectionEquality().hash(isEditing));
 
   @JsonKey(ignore: true)
   @override
@@ -394,29 +380,29 @@ abstract class _NewRecipeState implements NewRecipeState {
       bool isEditing}) = _$_NewRecipeState;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get uid => throw _privateConstructorUsedError;
+  String get uid;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  Category get category => throw _privateConstructorUsedError;
+  Category get category;
   @override
-  String get imagePath => throw _privateConstructorUsedError;
+  String get imagePath;
   @override
-  String get notes => throw _privateConstructorUsedError;
+  String get notes;
   @override
-  double get rating => throw _privateConstructorUsedError;
+  double get rating;
   @override
-  Map<String, double> get votes => throw _privateConstructorUsedError;
+  Map<String, double> get votes;
   @override
-  List<Ingredient> get ingredients => throw _privateConstructorUsedError;
+  List<Ingredient> get ingredients;
   @override
-  List<RecipeStep> get steps => throw _privateConstructorUsedError;
+  List<RecipeStep> get steps;
   @override
-  bool get isSaving => throw _privateConstructorUsedError;
+  bool get isSaving;
   @override
-  bool get isEditing => throw _privateConstructorUsedError;
+  bool get isEditing;
   @override
   @JsonKey(ignore: true)
   _$NewRecipeStateCopyWith<_NewRecipeState> get copyWith =>

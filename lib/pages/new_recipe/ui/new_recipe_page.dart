@@ -49,7 +49,10 @@ class NewRecipePage extends StatelessWidget with RouteArgument<Recipe?> {
   }
 
   Widget _buildContent(
-      BuildContext context, NewRecipeCubit cubit, NewRecipeState state) {
+    BuildContext context,
+    NewRecipeCubit cubit,
+    NewRecipeState state,
+  ) {
     return ListView(
       children: [
         const SectionHeader(title: Strings.image, iconData: Icons.photo),
@@ -172,15 +175,20 @@ class NewRecipePage extends StatelessWidget with RouteArgument<Recipe?> {
   }
 
   Widget _categoryDropdown(
-      BuildContext context, NewRecipeCubit cubit, NewRecipeState state) {
+    BuildContext context,
+    NewRecipeCubit cubit,
+    NewRecipeState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: DropdownButton<Category>(
         items: Category.values
-            .map((e) => DropdownMenuItem(
-                  value: e,
-                  child: Text(e.name),
-                ))
+            .map(
+              (e) => DropdownMenuItem(
+                value: e,
+                child: Text(e.name),
+              ),
+            )
             .toList(),
         onChanged: (value) {
           if (value != null) {

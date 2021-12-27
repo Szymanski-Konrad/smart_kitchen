@@ -112,7 +112,7 @@ class RecipeDetailsPage extends StatelessWidget with RouteArgument<Recipe> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.67,
                         ),
                         _recipeSection(context, state, cubit),
                         _mainInfo(context, state, cubit),
@@ -134,47 +134,48 @@ class RecipeDetailsPage extends StatelessWidget with RouteArgument<Recipe> {
     RecipeDetailsCubit cubit,
   ) {
     showDialog<void>(
-        context: context,
-        builder: (context) {
-          return SimpleDialog(
-            children: [
-              Center(
-                child: Column(
-                  children: [
-                    RatingBar(
-                      initialRating: state.stars,
-                      maxRating: 5,
-                      minRating: 1,
-                      allowHalfRating: true,
-                      onRatingUpdate: cubit.changeRate,
-                      ratingWidget: RatingWidget(
-                        full: const Icon(Icons.star),
-                        empty: const Icon(Icons.star_border),
-                        half: const Icon(Icons.star_half),
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  RatingBar(
+                    initialRating: state.stars,
+                    maxRating: 5,
+                    minRating: 1,
+                    allowHalfRating: true,
+                    onRatingUpdate: cubit.changeRate,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(Icons.star),
+                      empty: const Icon(Icons.star_border),
+                      half: const Icon(Icons.star_half),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text(Strings.cancel),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: const Text(Strings.cancel),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            cubit.rateRecipe(context);
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text(Strings.send),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ElevatedButton(
+                        onPressed: () {
+                          cubit.rateRecipe(context);
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(Strings.send),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          );
-        });
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Widget _changeScaleDialog(
@@ -190,30 +191,32 @@ class RecipeDetailsPage extends StatelessWidget with RouteArgument<Recipe> {
           context: context,
           builder: (context) {
             var scale = state.scale;
-            return StatefulBuilder(builder: (context, setState) {
-              return SimpleDialog(
-                children: [
-                  const Center(child: Text(Strings.recipeProportions)),
-                  DecimalNumberPicker(
-                    value: scale,
-                    minValue: 1,
-                    maxValue: 10,
-                    onChanged: (value) {
-                      setState(() {
-                        scale = value;
-                      });
-                    },
-                  ),
-                  MaterialButton(
-                    child: const Text(Strings.change),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      cubit.changeScale(scale);
-                    },
-                  )
-                ],
-              );
-            });
+            return StatefulBuilder(
+              builder: (context, setState) {
+                return SimpleDialog(
+                  children: [
+                    const Center(child: Text(Strings.recipeProportions)),
+                    DecimalNumberPicker(
+                      value: scale,
+                      minValue: 1,
+                      maxValue: 10,
+                      onChanged: (value) {
+                        setState(() {
+                          scale = value;
+                        });
+                      },
+                    ),
+                    MaterialButton(
+                      child: const Text(Strings.change),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        cubit.changeScale(scale);
+                      },
+                    )
+                  ],
+                );
+              },
+            );
           },
         );
       },
@@ -232,8 +235,10 @@ class RecipeDetailsPage extends StatelessWidget with RouteArgument<Recipe> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(state.recipe.name,
-                  style: Theme.of(context).textTheme.headline6),
+              Text(
+                state.recipe.name,
+                style: Theme.of(context).textTheme.headline6,
+              ),
               _detailsCard(
                 content: state.recipeRating,
                 iconData: Icons.star_border_outlined,
@@ -284,11 +289,13 @@ class RecipeDetailsPage extends StatelessWidget with RouteArgument<Recipe> {
       padding: const EdgeInsets.all(8),
       child: GestureDetector(
         onTap: onTap,
-        child: Row(children: [
-          Icon(iconData),
-          const SizedBox(width: 8),
-          Text(content),
-        ]),
+        child: Row(
+          children: [
+            Icon(iconData),
+            const SizedBox(width: 8),
+            Text(content),
+          ],
+        ),
       ),
     );
   }

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_kitchen/app/resources/color_palette.dart';
+import 'package:smart_kitchen/app/resources/constants.dart';
+import 'package:smart_kitchen/app/resources/dimensions.dart';
+import 'package:smart_kitchen/app/resources/paddings.dart';
+import 'package:smart_kitchen/app/resources/spacings.dart';
 import 'package:smart_kitchen/app/resources/strings.dart';
+import 'package:smart_kitchen/models/recipe/recipe.dart';
 import 'package:smart_kitchen/pages/recipes/bloc/recipes_cubit.dart';
 import 'package:smart_kitchen/pages/recipes/bloc/recipes_state.dart';
-import 'package:smart_kitchen/utils/scoped_bloc_builder.dart';
 import 'package:smart_kitchen/utils/ui/category_chips.dart';
 import 'package:smart_kitchen/utils/ui/recipe_card.dart';
+import 'package:smart_kitchen/utils/ui/search_field.dart';
 import 'package:smart_kitchen/utils/ui/standard_text_field.dart';
 
 const popUpItems = [
@@ -28,39 +34,85 @@ class RecipesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedBlocBuilder<RecipesCubit, RecipesState>(
-      create: (_) => BlocProvider.of<RecipesCubit>(context)..fetchRecipes(),
-      builder: (context, state, cubit) {
+    final cubit = BlocProvider.of<RecipesCubit>(context);
+    return BlocBuilder<RecipesCubit, RecipesState>(
+      builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: StandardTextField(
-              hintText: Strings.searchRecipe,
-              initialValue: state.searchString ?? '',
-              key: const Key(Strings.searchRecipe),
-              onChanged: (value) => cubit.changeSearchString(value),
-            ),
-            actions: !state.isSearching
-                ? [
-                    PopupMenuButton<String>(
-                      onSelected: (selected) {
-                        if (selected == 'new') {
-                          cubit.createNewRecipe();
-                        }
-                      },
-                      child: const Icon(
-                        Icons.more_vert,
-                        size: 26,
-                      ),
-                      itemBuilder: (context) => popUpItems,
-                    ),
-                  ]
-                : null,
-          ),
-          body: state.isSearching
-              ? _searchRecipes(context, state, cubit)
-              : _recipes(context, state, cubit),
+          body: _buildContent(context, state, cubit),
         );
       },
+    );
+  }
+
+  Widget _buildHeader(
+    BuildContext context,
+    RecipesState state,
+    RecipesCubit cubit,
+  ) {
+    return Row(
+      children: [
+        Expanded(
+          child: SearchField(
+            hintText: Strings.searchRecipe,
+            initialValue: state.searchString ?? '',
+            key: const Key(Strings.searchRecipe),
+            onChanged: cubit.changeSearchString,
+          ),
+        ),
+        Spacings.s16,
+        AnimatedContainer(
+          duration: Constants.defaultAnimationDuration,
+          width: state.isSearching ? 0 : 50,
+          child: PopupMenuButton<String>(
+            padding: EdgeInsets.zero,
+            onSelected: (selected) {
+              if (selected == 'new') {
+                cubit.createNewRecipe();
+              }
+            },
+            child: _buildMoreButton(),
+            itemBuilder: (context) => popUpItems,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMoreButton() {
+    return Container(
+      height: Constants.searchTextFieldSize,
+      width: Constants.searchTextFieldSize,
+      decoration: BoxDecoration(
+        color: ColorPalette.wheat,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: const Icon(
+        Icons.more_vert,
+        color: ColorPalette.green,
+        size: 26,
+      ),
+    );
+  }
+
+  Widget _buildContent(
+    BuildContext context,
+    RecipesState state,
+    RecipesCubit cubit,
+  ) {
+    return SafeArea(
+      child: Column(
+        children: [
+          Padding(
+            padding: Paddings.all16,
+            child: _buildHeader(context, state, cubit),
+          ),
+          Expanded(
+            child: state.isSearching
+                ? _searchRecipes(context, state, cubit)
+                : _recipes(context, state, cubit),
+          ),
+        ],
+      ),
     );
   }
 
@@ -69,22 +121,9 @@ class RecipesPage extends StatelessWidget {
     RecipesState state,
     RecipesCubit cubit,
   ) {
-    return SizedBox(
-      child: state.filteredRecipes.isNotEmpty
-          ? ListView.builder(
-              itemCount: state.filteredRecipes.length,
-              itemBuilder: (context, index) {
-                final recipe = state.filteredRecipes[index];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                    vertical: 16,
-                  ),
-                  child: RecipeCard(recipe: recipe),
-                );
-              },
-            )
-          : const Center(child: Text(Strings.noRecipes)),
+    return Padding(
+      padding: Paddings.all16,
+      child: showRecipes(state.filteredRecipes),
     );
   }
 
@@ -96,7 +135,12 @@ class RecipesPage extends StatelessWidget {
     return Column(
       children: [
         categoryChips(context, state, cubit),
-        Expanded(child: showRecipes(context, state, cubit)),
+        Expanded(
+          child: Padding(
+            padding: Paddings.horizontal16,
+            child: showRecipes(state.categoryRecipes),
+          ),
+        ),
       ],
     );
   }
@@ -106,31 +150,20 @@ class RecipesPage extends StatelessWidget {
     RecipesState state,
     RecipesCubit cubit,
   ) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: CategoryChips(
-        selectedCategory: state.selectedCategory,
-        onCategoryChanged: cubit.changeCategory,
-      ),
+    return CategoryChips(
+      selectedCategory: state.selectedCategory,
+      onCategoryChanged: cubit.changeCategory,
     );
   }
 
-  Widget showRecipes(
-    BuildContext context,
-    RecipesState state,
-    RecipesCubit cubit,
-  ) {
-    return state.categoryCount > 0
-        ? ListView.builder(
-            itemCount: state.categoryCount,
+  Widget showRecipes(List<Recipe> recipes) {
+    return recipes.isNotEmpty
+        ? ListView.separated(
+            separatorBuilder: (context, index) => Spacings.s16,
+            physics: const PageScrollPhysics(),
+            itemCount: recipes.length,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 4,
-                  vertical: 16,
-                ),
-                child: RecipeCard(recipe: state.categoryRecipes[index]),
-              );
+              return RecipeCard(recipe: recipes[index]);
             },
           )
         : const Center(

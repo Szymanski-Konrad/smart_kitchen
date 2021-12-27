@@ -43,4 +43,29 @@ class HiveDatabase {
     final box = Hive.box<Recipe>(recipesBox);
     await box.delete(recipe.id);
   }
+
+  /// Fetch planner day from storage on [date]
+  static Future<PlannerDay> fetchPlannerDay(DateTime date) async {
+    final box = Hive.box<PlannerDay>(plannerBox);
+    return box.get(date.toString(), defaultValue: PlannerDay.empty(date)) ??
+        PlannerDay.empty(date);
+  }
+
+  /// Fetch saved dates to show markers on calendar
+  static Future<List<DateTime>> fetchDays() async {
+    final box = Hive.box<PlannerDay>(plannerBox);
+    return box.keys.map((dynamic e) => DateTime.parse(e as String)).toList();
+  }
+
+  /// Save [day] planner day to storage on [date]
+  static Future<void> savePlannerDay(DateTime date, PlannerDay day) async {
+    final box = Hive.box<PlannerDay>(plannerBox);
+    await box.put(date.toString(), day);
+  }
+
+  /// Remove planner day from storage on [date]
+  static Future<void> removePlannerDay(DateTime date) async {
+    final box = Hive.box<PlannerDay>(plannerBox);
+    await box.delete(date.toString());
+  }
 }

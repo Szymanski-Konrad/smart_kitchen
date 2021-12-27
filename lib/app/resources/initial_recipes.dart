@@ -11,28 +11,45 @@ abstract class InitialRecipes {
     final ingredients = <Ingredient>[
       Ingredient.withId(recipeId: uuid, name: 'twaróg', unit: 'g', amount: 250),
       Ingredient.withId(
-          recipeId: uuid, name: 'jajka', unit: 'sztuki', amount: 3),
+        recipeId: uuid,
+        name: 'jajka',
+        unit: 'sztuki',
+        amount: 3,
+      ),
       Ingredient.withId(
-          recipeId: uuid, name: 'cukier wanilinowy', unit: 'łyżka', amount: 1),
+        recipeId: uuid,
+        name: 'cukier wanilinowy',
+        unit: 'łyżka',
+        amount: 1,
+      ),
       Ingredient.withId(
-          recipeId: uuid, name: 'jabłko', unit: 'sztuka', amount: 1),
+        recipeId: uuid,
+        name: 'jabłko',
+        unit: 'sztuka',
+        amount: 1,
+      ),
       Ingredient.withId(recipeId: uuid, name: 'mąka', unit: 'łyżki', amount: 3),
       Ingredient.withId(
-          recipeId: uuid, name: 'cynamon', unit: 'łyżeczka', amount: 0.5),
+        recipeId: uuid,
+        name: 'cynamon',
+        unit: 'łyżeczka',
+        amount: 0.5,
+      ),
     ];
 
     final steps = [
       RecipeStep.withId(
-          recipeId: uuid,
-          timers: {const Uuid().v1(): 3},
-          content:
-              'Do miski włożyć twaróg, dodać żółtka (białka zachować) oraz cukier wanilinowy, następnie rozgnieść praską. ',
-          ingredients: [
-            ingredients[0].id,
-            ingredients[1].id,
-            ingredients[2].id,
-            ingredients[3].id
-          ]),
+        recipeId: uuid,
+        timers: {const Uuid().v1(): 3},
+        content:
+            'Do miski włożyć twaróg, dodać żółtka (białka zachować) oraz cukier wanilinowy, następnie rozgnieść praską. ',
+        ingredients: [
+          ingredients[0].id,
+          ingredients[1].id,
+          ingredients[2].id,
+          ingredients[3].id
+        ],
+      ),
       RecipeStep.withId(
         recipeId: uuid,
         timers: {const Uuid().v1(): 2},
@@ -76,15 +93,35 @@ abstract class InitialRecipes {
 
     final ingredients = [
       Ingredient.withId(
-          recipeId: uuid, name: 'banan', unit: 'sztuk', amount: 1),
+        recipeId: uuid,
+        name: 'banan',
+        unit: 'sztuk',
+        amount: 1,
+      ),
       Ingredient.withId(
-          recipeId: uuid, name: 'płatki owsiane', unit: 'łyżki', amount: 3),
+        recipeId: uuid,
+        name: 'płatki owsiane',
+        unit: 'łyżki',
+        amount: 3,
+      ),
       Ingredient.withId(
-          recipeId: uuid, name: 'masło orzechowe', unit: 'łyżki', amount: 1),
+        recipeId: uuid,
+        name: 'masło orzechowe',
+        unit: 'łyżki',
+        amount: 1,
+      ),
       Ingredient.withId(
-          recipeId: uuid, name: 'cukier', unit: 'łyżeczki', amount: 2),
+        recipeId: uuid,
+        name: 'cukier',
+        unit: 'łyżeczki',
+        amount: 2,
+      ),
       Ingredient.withId(
-          recipeId: uuid, name: 'mleko', unit: 'szklanka', amount: 1),
+        recipeId: uuid,
+        name: 'mleko',
+        unit: 'szklanka',
+        amount: 1,
+      ),
     ];
 
     final steps = [

@@ -23,27 +23,28 @@ class CookingPage extends StatelessWidget
 
   Future<bool> _onWillPop(BuildContext context, CookingCubit cubit) async {
     final result = await showDialog<bool>(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("Na pewno?"),
-            content:
-                Text("Chcesz przerwać gotowanie? Progres zostanie utracony"),
-            actions: <Widget>[
-              TextButton(
-                child: Text("Tak"),
-                onPressed: () {
-                  Navigator.of(context).pop(true);
-                },
-              ),
-              ElevatedButton(
-                child: Text("Nie"),
-                onPressed: () => Navigator.of(context).pop(false),
-              )
-            ],
-          );
-        });
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Na pewno?'),
+          content: const Text(
+              'Chcesz przerwać gotowanie? Progres zostanie utracony'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Tak'),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Nie'),
+              onPressed: () => Navigator.of(context).pop(false),
+            )
+          ],
+        );
+      },
+    );
 
     return result ?? false;
   }
@@ -98,10 +99,11 @@ class CookingPage extends StatelessWidget
       toolbarHeight: MediaQuery.of(context).size.height * 0.2,
       flexibleSpace: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('assets/cookpanel.jpg'),
-          fit: BoxFit.cover,
-        )),
+          image: DecorationImage(
+            image: AssetImage('assets/cookpanel.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
@@ -115,10 +117,11 @@ class CookingPage extends StatelessWidget
       title: Text(state.stepState),
       flexibleSpace: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('assets/cookpanel.jpg'),
-          fit: BoxFit.cover,
-        )),
+          image: DecorationImage(
+            image: AssetImage('assets/cookpanel.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
@@ -134,10 +137,11 @@ class CookingPage extends StatelessWidget
       toolbarHeight: MediaQuery.of(context).size.height * 0.2,
       flexibleSpace: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('assets/cookpanel.jpg'),
-          fit: BoxFit.cover,
-        )),
+          image: DecorationImage(
+            image: AssetImage('assets/cookpanel.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
@@ -235,11 +239,13 @@ class CookingPage extends StatelessWidget
                         : null
                     : cubit.nextStep
                 : null,
-            child: Text(state.isLastStep
-                ? state.isReadyToEnd
-                    ? Strings.cookingEnd
-                    : Strings.waitForTimers
-                : Strings.nextStep),
+            child: Text(
+              state.isLastStep
+                  ? state.isReadyToEnd
+                      ? Strings.cookingEnd
+                      : Strings.waitForTimers
+                  : Strings.nextStep,
+            ),
           ),
         ],
       ),
@@ -292,65 +298,68 @@ class CookingPage extends StatelessWidget
     return ElevatedButton.icon(
       onPressed: () {
         showDialog<void>(
-            context: context,
-            builder: (ctx) {
-              return SimpleDialog(
-                children: [
-                  if (!cubit.isTimerInit(key))
-                    MaterialButton(
-                      onPressed: () {
-                        cubit.runTimer(key);
-                        Navigator.of(ctx).pop();
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          Icon(Icons.play_arrow),
-                          SizedBox(width: 8),
-                          Text(Strings.start),
-                        ],
-                      ),
-                    ),
-                  if (cubit.isTimerInit(key))
-                    MaterialButton(
-                      onPressed: () {
-                        cubit.pauseTimer(key);
-                        Navigator.of(ctx).pop();
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(cubit.isTimerPaused(key)
-                              ? Icons.play_arrow
-                              : Icons.pause),
-                          const SizedBox(width: 8),
-                          Text(
-                            cubit.isTimerPaused(key)
-                                ? Strings.resume
-                                : Strings.pause,
-                          ),
-                        ],
-                      ),
-                    ),
+          context: context,
+          builder: (ctx) {
+            return SimpleDialog(
+              children: [
+                if (!cubit.isTimerInit(key))
                   MaterialButton(
-                    onPressed: cubit.isTimerInit(key)
-                        ? () {
-                            cubit.addMinuteToTimer(key);
-                            Navigator.of(ctx).pop();
-                          }
-                        : null,
+                    onPressed: () {
+                      cubit.runTimer(key);
+                      Navigator.of(ctx).pop();
+                    },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: const [
-                        Icon(Icons.more_time_outlined),
+                        Icon(Icons.play_arrow),
                         SizedBox(width: 8),
-                        Text(Strings.addMinute),
+                        Text(Strings.start),
                       ],
                     ),
                   ),
-                ],
-              );
-            });
+                if (cubit.isTimerInit(key))
+                  MaterialButton(
+                    onPressed: () {
+                      cubit.pauseTimer(key);
+                      Navigator.of(ctx).pop();
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          cubit.isTimerPaused(key)
+                              ? Icons.play_arrow
+                              : Icons.pause,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          cubit.isTimerPaused(key)
+                              ? Strings.resume
+                              : Strings.pause,
+                        ),
+                      ],
+                    ),
+                  ),
+                MaterialButton(
+                  onPressed: cubit.isTimerInit(key)
+                      ? () {
+                          cubit.addMinuteToTimer(key);
+                          Navigator.of(ctx).pop();
+                        }
+                      : null,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(Icons.more_time_outlined),
+                      SizedBox(width: 8),
+                      Text(Strings.addMinute),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
+        );
       },
       icon: const Icon(Icons.timer),
       label: Text(state.timerString(key)),

@@ -49,4 +49,6 @@ extension RecipeExtensions on Recipe {
     final map = Map<String, double>.from(votes)..addAll({uid: stars});
     return map;
   }
+
+  String get formattedRating => rating.toStringAsFixed(2);
 }

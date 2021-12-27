@@ -7,12 +7,12 @@ import 'package:smart_kitchen/pages/new_recipe/bloc/new_recipe_cubit.dart';
 import 'package:smart_kitchen/utils/ui/standard_text_field.dart';
 
 class IngredientTile extends StatelessWidget {
-  const IngredientTile(
-      {Key? key,
-      required this.ingredient,
-      required this.cubit,
-      this.isEditable = false})
-      : super(key: key);
+  const IngredientTile({
+    Key? key,
+    required this.ingredient,
+    required this.cubit,
+    this.isEditable = false,
+  }) : super(key: key);
 
   final Ingredient ingredient;
   final NewRecipeCubit cubit;
@@ -39,27 +39,29 @@ class IngredientTile extends StatelessWidget {
       context: context,
       builder: (context) {
         var input = ingredient.show;
-        return StatefulBuilder(builder: (context, setState) {
-          return SimpleDialog(
-            title: const Text(Strings.editIngredient),
-            children: [
-              StandardTextField(
-                hintText: Strings.newIngredientHint,
-                initialValue: input,
-                onChanged: (value) {
-                  input = value;
-                },
-              ),
-              MaterialButton(
-                child: const Text(Strings.save),
-                onPressed: () {
-                  cubit.updateIngredientFromInput(input, ingredient);
-                  Navigation.instance.pop();
-                },
-              ),
-            ],
-          );
-        });
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return SimpleDialog(
+              title: const Text(Strings.editIngredient),
+              children: [
+                StandardTextField(
+                  hintText: Strings.newIngredientHint,
+                  initialValue: input,
+                  onChanged: (value) {
+                    input = value;
+                  },
+                ),
+                MaterialButton(
+                  child: const Text(Strings.save),
+                  onPressed: () {
+                    cubit.updateIngredientFromInput(input, ingredient);
+                    Navigation.instance.pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
       },
     );
   }

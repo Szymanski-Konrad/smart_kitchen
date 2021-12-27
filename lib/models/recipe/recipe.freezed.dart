@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'recipe.dart';
 
@@ -45,7 +46,7 @@ class _$RecipeTearOff {
     );
   }
 
-  Recipe fromJson(Map<String, Object> json) {
+  Recipe fromJson(Map<String, Object?> json) {
     return Recipe.fromJson(json);
   }
 }
@@ -266,7 +267,7 @@ class _$_Recipe implements _Recipe {
       @HiveField(9) required this.steps});
 
   factory _$_Recipe.fromJson(Map<String, dynamic> json) =>
-      _$_$_RecipeFromJson(json);
+      _$$_RecipeFromJson(json);
 
   @override
   @HiveField(0)
@@ -286,11 +287,11 @@ class _$_Recipe implements _Recipe {
   @override
   @HiveField(5)
   final String userId;
-  @JsonKey(defaultValue: 0.0)
+  @JsonKey()
   @override
   @HiveField(6)
   final double rating;
-  @JsonKey(defaultValue: const <String, double>{})
+  @JsonKey()
   @override
   @HiveField(7)
   final Map<String, double> votes;
@@ -309,45 +310,34 @@ class _$_Recipe implements _Recipe {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Recipe &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.category, category) ||
-                const DeepCollectionEquality()
-                    .equals(other.category, category)) &&
-            (identical(other.imagePath, imagePath) ||
-                const DeepCollectionEquality()
-                    .equals(other.imagePath, imagePath)) &&
-            (identical(other.notes, notes) ||
-                const DeepCollectionEquality().equals(other.notes, notes)) &&
-            (identical(other.userId, userId) ||
-                const DeepCollectionEquality().equals(other.userId, userId)) &&
-            (identical(other.rating, rating) ||
-                const DeepCollectionEquality().equals(other.rating, rating)) &&
-            (identical(other.votes, votes) ||
-                const DeepCollectionEquality().equals(other.votes, votes)) &&
-            (identical(other.ingredients, ingredients) ||
-                const DeepCollectionEquality()
-                    .equals(other.ingredients, ingredients)) &&
-            (identical(other.steps, steps) ||
-                const DeepCollectionEquality().equals(other.steps, steps)));
+        (other.runtimeType == runtimeType &&
+            other is _Recipe &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other.imagePath, imagePath) &&
+            const DeepCollectionEquality().equals(other.notes, notes) &&
+            const DeepCollectionEquality().equals(other.userId, userId) &&
+            const DeepCollectionEquality().equals(other.rating, rating) &&
+            const DeepCollectionEquality().equals(other.votes, votes) &&
+            const DeepCollectionEquality()
+                .equals(other.ingredients, ingredients) &&
+            const DeepCollectionEquality().equals(other.steps, steps));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(category) ^
-      const DeepCollectionEquality().hash(imagePath) ^
-      const DeepCollectionEquality().hash(notes) ^
-      const DeepCollectionEquality().hash(userId) ^
-      const DeepCollectionEquality().hash(rating) ^
-      const DeepCollectionEquality().hash(votes) ^
-      const DeepCollectionEquality().hash(ingredients) ^
-      const DeepCollectionEquality().hash(steps);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(imagePath),
+      const DeepCollectionEquality().hash(notes),
+      const DeepCollectionEquality().hash(userId),
+      const DeepCollectionEquality().hash(rating),
+      const DeepCollectionEquality().hash(votes),
+      const DeepCollectionEquality().hash(ingredients),
+      const DeepCollectionEquality().hash(steps));
 
   @JsonKey(ignore: true)
   @override
@@ -356,7 +346,7 @@ class _$_Recipe implements _Recipe {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_RecipeToJson(this);
+    return _$$_RecipeToJson(this);
   }
 }
 
@@ -377,34 +367,34 @@ abstract class _Recipe implements Recipe {
 
   @override
   @HiveField(0)
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @HiveField(1)
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @HiveField(2)
-  Category get category => throw _privateConstructorUsedError;
+  Category get category;
   @override
   @HiveField(3)
-  String? get imagePath => throw _privateConstructorUsedError;
+  String? get imagePath;
   @override
   @HiveField(4)
-  String? get notes => throw _privateConstructorUsedError;
+  String? get notes;
   @override
   @HiveField(5)
-  String get userId => throw _privateConstructorUsedError;
+  String get userId;
   @override
   @HiveField(6)
-  double get rating => throw _privateConstructorUsedError;
+  double get rating;
   @override
   @HiveField(7)
-  Map<String, double> get votes => throw _privateConstructorUsedError;
+  Map<String, double> get votes;
   @override
   @HiveField(8)
-  List<Ingredient> get ingredients => throw _privateConstructorUsedError;
+  List<Ingredient> get ingredients;
   @override
   @HiveField(9)
-  List<RecipeStep> get steps => throw _privateConstructorUsedError;
+  List<RecipeStep> get steps;
   @override
   @JsonKey(ignore: true)
   _$RecipeCopyWith<_Recipe> get copyWith => throw _privateConstructorUsedError;

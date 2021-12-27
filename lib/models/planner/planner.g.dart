@@ -17,7 +17,7 @@ class PlannerDayAdapter extends TypeAdapter<_$_PlannerDay> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$_PlannerDay(
-      id: fields[0] as String?,
+      id: fields[0] as String,
       date: fields[1] as DateTime,
       dishes: (fields[2] as List).cast<Recipe>(),
     );
@@ -50,17 +50,16 @@ class PlannerDayAdapter extends TypeAdapter<_$_PlannerDay> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PlannerDay _$_$_PlannerDayFromJson(Map<String, dynamic> json) {
-  return _$_PlannerDay(
-    id: json['id'] as String?,
-    date: DateTime.parse(json['date'] as String),
-    dishes: (json['dishes'] as List<dynamic>)
-        .map((e) => Recipe.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+_$_PlannerDay _$$_PlannerDayFromJson(Map<String, dynamic> json) =>
+    _$_PlannerDay(
+      id: json['id'] as String,
+      date: DateTime.parse(json['date'] as String),
+      dishes: (json['dishes'] as List<dynamic>)
+          .map((e) => Recipe.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
-Map<String, dynamic> _$_$_PlannerDayToJson(_$_PlannerDay instance) =>
+Map<String, dynamic> _$$_PlannerDayToJson(_$_PlannerDay instance) =>
     <String, dynamic>{
       'id': instance.id,
       'date': instance.date.toIso8601String(),

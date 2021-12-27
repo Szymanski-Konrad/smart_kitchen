@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:smart_kitchen/app/navigation/navigation.dart';
 import 'package:smart_kitchen/app/navigation/routes.dart';
@@ -8,8 +6,8 @@ import 'package:smart_kitchen/app/resources/spacings.dart';
 import 'package:smart_kitchen/models/recipe/recipe.dart';
 import 'package:smart_kitchen/utils/ui/recipe_sections.dart';
 
-class RecipeCard extends StatelessWidget {
-  const RecipeCard({
+class PlannerCard extends StatelessWidget {
+  const PlannerCard({
     Key? key,
     required this.recipe,
   }) : super(key: key);
@@ -23,11 +21,14 @@ class RecipeCard extends StatelessWidget {
         Navigation.instance.push(SharedRoutes.recipeDetails, arguments: recipe);
       },
       child: SizedBox(
-        height: Constants.imagePreviewHeight,
+        height: Constants.smallImagePreviewHeight,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RecipeImagePreview(recipe: recipe),
+            RecipeImagePreview(
+              recipe: recipe,
+              smallPreview: true,
+            ),
             Spacings.s16,
             Expanded(
               child: Column(
@@ -36,7 +37,6 @@ class RecipeCard extends StatelessWidget {
                 children: [
                   RecipeName(name: recipe.name),
                   Spacings.s8,
-                  RecipeRating(rating: recipe.formattedRating),
                 ],
               ),
             ),

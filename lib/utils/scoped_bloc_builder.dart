@@ -3,7 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 typedef Create<T> = T Function(BuildContext context);
 typedef ScopedBlocWidgetBuilder<S, C extends Cubit<S>> = Widget Function(
-    BuildContext context, S state, C cubit);
+  BuildContext context,
+  S state,
+  C cubit,
+);
 
 class ScopedBlocBuilder<C extends Cubit<S>, S> extends StatelessWidget {
   const ScopedBlocBuilder({

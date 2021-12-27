@@ -12,6 +12,7 @@ import 'package:smart_kitchen/pages/home/ui/home_page.dart';
 import 'package:smart_kitchen/pages/new_recipe/ui/ingredients_input_page.dart';
 import 'package:smart_kitchen/pages/new_recipe/ui/new_recipe_page.dart';
 import 'package:smart_kitchen/pages/new_recipe/ui/steps_input_page.dart';
+import 'package:smart_kitchen/pages/planner/ui/planner_page.dart';
 import 'package:smart_kitchen/pages/recipe_details/ui/recipe_details_page.dart';
 
 abstract class AppRouter {
@@ -55,6 +56,8 @@ extension on RouteSettings {
         return const StepsInput();
       case SharedRoutes.cooking:
         return const CookingPage();
+      case SharedRoutes.planner:
+        return const PlannerPage();
       default:
         return const SplashScreen();
     }

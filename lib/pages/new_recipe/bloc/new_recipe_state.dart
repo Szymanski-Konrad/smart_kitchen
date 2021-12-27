@@ -59,8 +59,10 @@ extension NewRecipeStateExtension on NewRecipeState {
       steps.firstWhere((element) => element.id == stepId).ingredients;
 
   bool get isAllIngredientsSelected => usedIngredients == ingredients.length;
-  int get usedIngredients => steps.fold<int>(0,
-      (previousValue, element) => previousValue + element.ingredients.length);
+  int get usedIngredients => steps.fold<int>(
+        0,
+        (previousValue, element) => previousValue + element.ingredients.length,
+      );
   int get unusedIngredients => ingredients.length - usedIngredients;
 
   List<Ingredient> stepAvailableIngredients(String stepId) {

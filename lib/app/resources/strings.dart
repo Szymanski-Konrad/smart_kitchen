@@ -130,4 +130,9 @@ abstract class Strings {
   static const String start = 'Rozpocznij';
   static const String runTimer = 'Uruchom odliczanie';
   static const String waitForTimers = 'Oczekiwanie na minutniki';
+
+  // Planner screen
+  static const String generatePlanner = 'Losuj posiłki';
+  static const String createShopList = 'Dodaj do listy zakupów';
+  static const String planNewDish = 'Zaplanuj nowy posiłek';
 }

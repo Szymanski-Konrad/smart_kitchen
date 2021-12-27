@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'home_state.dart';
 
@@ -110,15 +111,15 @@ class _$_HomeState implements _HomeState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _HomeState &&
-            (identical(other.currentIndex, currentIndex) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentIndex, currentIndex)));
+        (other.runtimeType == runtimeType &&
+            other is _HomeState &&
+            const DeepCollectionEquality()
+                .equals(other.currentIndex, currentIndex));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(currentIndex);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(currentIndex));
 
   @JsonKey(ignore: true)
   @override
@@ -130,7 +131,7 @@ abstract class _HomeState implements HomeState {
   const factory _HomeState({required int currentIndex}) = _$_HomeState;
 
   @override
-  int get currentIndex => throw _privateConstructorUsedError;
+  int get currentIndex;
   @override
   @JsonKey(ignore: true)
   _$HomeStateCopyWith<_HomeState> get copyWith =>

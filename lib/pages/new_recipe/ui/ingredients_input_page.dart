@@ -20,8 +20,9 @@ class IngredientsInput extends StatelessWidget {
             title: const Text(Strings.ingredients),
             actions: [
               IconButton(
-                  onPressed: () => Navigation.instance.pop(),
-                  icon: const Icon(Icons.save)),
+                onPressed: () => Navigation.instance.pop(),
+                icon: const Icon(Icons.save),
+              ),
             ],
           ),
           body: _buildContent(context, cubit, state),

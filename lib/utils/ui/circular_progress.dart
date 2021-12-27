@@ -7,7 +7,7 @@ class CircularProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CircularProgressIndicator(
-      color: ColorPalette.accent,
-    );
+        // color: ColorPalette.darkCyan,
+        );
   }
 }

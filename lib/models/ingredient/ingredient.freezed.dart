@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'ingredient.dart';
 
@@ -35,7 +36,7 @@ class _$IngredientTearOff {
     );
   }
 
-  Ingredient fromJson(Map<String, Object> json) {
+  Ingredient fromJson(Map<String, Object?> json) {
     return Ingredient.fromJson(json);
   }
 }
@@ -185,7 +186,7 @@ class _$_Ingredient implements _Ingredient {
       @HiveField(4) this.amount});
 
   factory _$_Ingredient.fromJson(Map<String, dynamic> json) =>
-      _$_$_IngredientFromJson(json);
+      _$$_IngredientFromJson(json);
 
   @override
   @HiveField(0)
@@ -211,28 +212,23 @@ class _$_Ingredient implements _Ingredient {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Ingredient &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.recipeId, recipeId) ||
-                const DeepCollectionEquality()
-                    .equals(other.recipeId, recipeId)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)) &&
-            (identical(other.amount, amount) ||
-                const DeepCollectionEquality().equals(other.amount, amount)));
+        (other.runtimeType == runtimeType &&
+            other is _Ingredient &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.recipeId, recipeId) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.unit, unit) &&
+            const DeepCollectionEquality().equals(other.amount, amount));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(recipeId) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(unit) ^
-      const DeepCollectionEquality().hash(amount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(recipeId),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(unit),
+      const DeepCollectionEquality().hash(amount));
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +237,7 @@ class _$_Ingredient implements _Ingredient {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_IngredientToJson(this);
+    return _$$_IngredientToJson(this);
   }
 }
 
@@ -258,19 +254,19 @@ abstract class _Ingredient implements Ingredient {
 
   @override
   @HiveField(0)
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @HiveField(1)
-  String get recipeId => throw _privateConstructorUsedError;
+  String get recipeId;
   @override
   @HiveField(2)
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @HiveField(3)
-  String? get unit => throw _privateConstructorUsedError;
+  String? get unit;
   @override
   @HiveField(4)
-  double? get amount => throw _privateConstructorUsedError;
+  double? get amount;
   @override
   @JsonKey(ignore: true)
   _$IngredientCopyWith<_Ingredient> get copyWith =>

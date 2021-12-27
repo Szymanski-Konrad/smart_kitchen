@@ -34,10 +34,12 @@ class AuthCubit extends Cubit<AuthState> {
       if (e.code == 'email-already-in-use') message = Strings.emailAlreadyInUse;
       emit(state.copyWith(isLoading: false, errorMessage: message));
     } catch (e) {
-      emit(state.copyWith(
-        isLoading: false,
-        errorMessage: Strings.unknownError,
-      ));
+      emit(
+        state.copyWith(
+          isLoading: false,
+          errorMessage: Strings.unknownError,
+        ),
+      );
     }
   }
 
@@ -46,14 +48,16 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void resetFormState() {
-    emit(state.copyWith(
-      email: '',
-      userName: '',
-      password: '',
-      displayName: null,
-      isLoading: false,
-      errorMessage: null,
-    ));
+    emit(
+      state.copyWith(
+        email: '',
+        userName: '',
+        password: '',
+        displayName: null,
+        isLoading: false,
+        errorMessage: null,
+      ),
+    );
   }
 
   void goToSignUpPage() {
@@ -71,10 +75,12 @@ class AuthCubit extends Cubit<AuthState> {
       emit(state.copyWith(isLoading: false));
       authenticate();
     } catch (e) {
-      emit(state.copyWith(
-        isLoading: false,
-        errorMessage: e.toString(),
-      ));
+      emit(
+        state.copyWith(
+          isLoading: false,
+          errorMessage: e.toString(),
+        ),
+      );
     }
   }
 
@@ -84,11 +90,20 @@ class AuthCubit extends Cubit<AuthState> {
       await authRepository.signInWithCredentials(state.email, state.password);
       emit(state.copyWith(isLoading: false));
       authenticate();
+    } on FirebaseAuthException catch (e) {
+      emit(
+        state.copyWith(
+          isLoading: false,
+          errorMessage: e.code,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(
-        isLoading: false,
-        errorMessage: e.toString(),
-      ));
+      emit(
+        state.copyWith(
+          isLoading: false,
+          errorMessage: e.toString(),
+        ),
+      );
     }
   }
 

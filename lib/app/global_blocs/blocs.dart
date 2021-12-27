@@ -9,9 +9,12 @@ abstract class GlobalBlocs {
   static final List<BlocProvider> providers = [
     BlocProvider<NewRecipeCubit>(
       create: (_) => NewRecipeCubit(),
+      lazy: true,
     ),
     BlocProvider<RecipesCubit>(
-      create: (_) => RecipesCubit(authRepository: AuthRepository()),
+      create: (_) =>
+          RecipesCubit(authRepository: AuthRepository())..fetchRecipes(),
+      lazy: true,
     ),
   ];
 }

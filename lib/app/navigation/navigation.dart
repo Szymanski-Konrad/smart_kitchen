@@ -24,8 +24,11 @@ class Navigation {
     return _currentState.popUntil((route) => route.isFirst);
   }
 
-  Future<dynamic> pushAndRemoveUntil(String route, RoutePredicate predicate,
-      {Object? arguments}) {
+  Future<dynamic> pushAndRemoveUntil(
+    String route,
+    RoutePredicate predicate, {
+    Object? arguments,
+  }) {
     return _currentState.pushNamedAndRemoveUntil(
       route,
       predicate,

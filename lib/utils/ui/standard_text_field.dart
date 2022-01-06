@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smart_kitchen/app/resources/color_palette.dart';
+import 'package:smart_kitchen/app/resources/paddings.dart';
 import 'package:smart_kitchen/app/resources/text_styles.dart';
+import 'package:smart_kitchen/app/resources/theme.dart';
 
 class StandardTextField extends StatefulWidget {
   const StandardTextField({
@@ -12,7 +15,9 @@ class StandardTextField extends StatefulWidget {
     this.errorText,
     this.keyboardType = TextInputType.text,
     this.maxLines = 1,
-  })  : assert(onChanged != null || onSubmitted != null),
+    this.minLines = 1,
+  })  : assert(
+            maxLines >= minLines, 'Max lines cannot be lower than min lines'),
         super(key: key);
 
   final String initialValue;
@@ -23,6 +28,7 @@ class StandardTextField extends StatefulWidget {
   final ValueChanged<String>? onSubmitted;
   final TextInputType keyboardType;
   final int maxLines;
+  final int minLines;
 
   @override
   State<StandardTextField> createState() => _StandardTextFieldState();
@@ -64,15 +70,15 @@ class _StandardTextFieldState extends State<StandardTextField> {
             }
           : null,
       maxLines: widget.maxLines,
-      minLines: 1,
+      minLines: widget.minLines,
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
-        border: InputBorder.none,
+        border: AppTheme.outlinedBorder,
         hintText: widget.hintText,
         errorText: widget.errorText,
         filled: true,
-        fillColor: Colors.white.withOpacity(0.1),
-        contentPadding: const EdgeInsets.all(8),
+        fillColor: ColorPalette.white,
+        contentPadding: Paddings.all8,
         suffixIcon:
             widget.onChanged != null ? _suffixClearIcon() : _suffixSubmitIcon(),
       ),

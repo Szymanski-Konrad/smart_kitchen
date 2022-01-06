@@ -17,7 +17,7 @@ abstract class TextStyles {
   );
 
   static const textField = TextStyle(
-    color: ColorPalette.white,
+    color: ColorPalette.black,
     fontSize: 16,
     height: 1.33,
   );
@@ -42,8 +42,16 @@ abstract class TextStyles {
     color: Colors.black,
   );
 
+  static const smallSectionHeader = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    height: 1.33,
+    color: Colors.black,
+  );
+
   static const h1 = TextStyle(
-    fontSize: 22,
+    fontSize: 32,
     fontWeight: FontWeight.bold,
-  )
+    color: Colors.black,
+  );
 }

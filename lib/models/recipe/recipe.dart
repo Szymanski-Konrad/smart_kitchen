@@ -1,7 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+import 'package:smart_kitchen/app/resources/hive_types.dart';
 import 'package:smart_kitchen/models/ingredient/ingredient.dart';
 import 'package:smart_kitchen/models/recipe/category.dart';
+import 'package:smart_kitchen/models/recipe/recipe_section.dart';
 import 'package:smart_kitchen/models/step/recipe_step.dart';
 
 part 'recipe.freezed.dart';
@@ -9,7 +11,7 @@ part 'recipe.g.dart';
 
 @freezed
 class Recipe with _$Recipe {
-  @HiveType(typeId: 0, adapterName: 'RecipeAdapter')
+  @HiveType(typeId: HiveTypeId.h0, adapterName: 'RecipeAdapter')
   factory Recipe({
     @HiveField(0) required String id,
     @HiveField(1) required String name,
@@ -21,6 +23,7 @@ class Recipe with _$Recipe {
     @HiveField(7) @Default(<String, double>{}) Map<String, double> votes,
     @HiveField(8) required List<Ingredient> ingredients,
     @HiveField(9) required List<RecipeStep> steps,
+    @HiveField(10) @Default(<RecipeSection>[]) List<RecipeSection> sections,
   }) = _Recipe;
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
@@ -51,4 +54,14 @@ extension RecipeExtensions on Recipe {
   }
 
   String get formattedRating => rating.toStringAsFixed(2);
+
+  List<Ingredient> sectionIngredients(String? sectionId) {
+    return ingredients
+        .where((element) => element.sectionId == sectionId)
+        .toList();
+  }
+
+  List<RecipeStep> sectionSteps(String? sectionId) {
+    return steps.where((element) => element.sectionId == sectionId).toList();
+  }
 }

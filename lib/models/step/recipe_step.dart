@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+import 'package:smart_kitchen/app/resources/hive_types.dart';
 import 'package:smart_kitchen/app/resources/strings.dart';
 import 'package:uuid/uuid.dart';
 
@@ -8,13 +9,14 @@ part 'recipe_step.g.dart';
 
 @freezed
 class RecipeStep with _$RecipeStep {
-  @HiveType(typeId: 2, adapterName: 'RecipeStepAdapter')
+  @HiveType(typeId: HiveTypeId.h2, adapterName: 'RecipeStepAdapter')
   factory RecipeStep({
     @HiveField(0) required String id,
     @HiveField(1) required String recipeId,
     @HiveField(2) required String content,
     @HiveField(3) @Default(<String, int>{}) Map<String, int> timers,
     @HiveField(4) @Default(<String>[]) List<String> ingredients,
+    @HiveField(5) String? sectionId,
   }) = _RecipeStep;
 
   factory RecipeStep.withId({

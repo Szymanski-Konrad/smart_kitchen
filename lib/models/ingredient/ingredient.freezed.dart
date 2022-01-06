@@ -26,13 +26,15 @@ class _$IngredientTearOff {
       @HiveField(1) required String recipeId,
       @HiveField(2) required String name,
       @HiveField(3) String? unit,
-      @HiveField(4) double? amount}) {
+      @HiveField(4) double? amount,
+      @HiveField(5) String? sectionId}) {
     return _Ingredient(
       id: id,
       recipeId: recipeId,
       name: name,
       unit: unit,
       amount: amount,
+      sectionId: sectionId,
     );
   }
 
@@ -56,6 +58,8 @@ mixin _$Ingredient {
   String? get unit => throw _privateConstructorUsedError;
   @HiveField(4)
   double? get amount => throw _privateConstructorUsedError;
+  @HiveField(5)
+  String? get sectionId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,7 +77,8 @@ abstract class $IngredientCopyWith<$Res> {
       @HiveField(1) String recipeId,
       @HiveField(2) String name,
       @HiveField(3) String? unit,
-      @HiveField(4) double? amount});
+      @HiveField(4) double? amount,
+      @HiveField(5) String? sectionId});
 }
 
 /// @nodoc
@@ -91,6 +96,7 @@ class _$IngredientCopyWithImpl<$Res> implements $IngredientCopyWith<$Res> {
     Object? name = freezed,
     Object? unit = freezed,
     Object? amount = freezed,
+    Object? sectionId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -113,6 +119,10 @@ class _$IngredientCopyWithImpl<$Res> implements $IngredientCopyWith<$Res> {
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double?,
+      sectionId: sectionId == freezed
+          ? _value.sectionId
+          : sectionId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -128,7 +138,8 @@ abstract class _$IngredientCopyWith<$Res> implements $IngredientCopyWith<$Res> {
       @HiveField(1) String recipeId,
       @HiveField(2) String name,
       @HiveField(3) String? unit,
-      @HiveField(4) double? amount});
+      @HiveField(4) double? amount,
+      @HiveField(5) String? sectionId});
 }
 
 /// @nodoc
@@ -148,6 +159,7 @@ class __$IngredientCopyWithImpl<$Res> extends _$IngredientCopyWithImpl<$Res>
     Object? name = freezed,
     Object? unit = freezed,
     Object? amount = freezed,
+    Object? sectionId = freezed,
   }) {
     return _then(_Ingredient(
       id: id == freezed
@@ -170,20 +182,25 @@ class __$IngredientCopyWithImpl<$Res> extends _$IngredientCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double?,
+      sectionId: sectionId == freezed
+          ? _value.sectionId
+          : sectionId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: 1, adapterName: 'IngredientAdapter')
+@HiveType(typeId: HiveTypeId.h1, adapterName: 'IngredientAdapter')
 class _$_Ingredient implements _Ingredient {
   _$_Ingredient(
       {@HiveField(0) required this.id,
       @HiveField(1) required this.recipeId,
       @HiveField(2) required this.name,
       @HiveField(3) this.unit,
-      @HiveField(4) this.amount});
+      @HiveField(4) this.amount,
+      @HiveField(5) this.sectionId});
 
   factory _$_Ingredient.fromJson(Map<String, dynamic> json) =>
       _$$_IngredientFromJson(json);
@@ -203,10 +220,13 @@ class _$_Ingredient implements _Ingredient {
   @override
   @HiveField(4)
   final double? amount;
+  @override
+  @HiveField(5)
+  final String? sectionId;
 
   @override
   String toString() {
-    return 'Ingredient(id: $id, recipeId: $recipeId, name: $name, unit: $unit, amount: $amount)';
+    return 'Ingredient(id: $id, recipeId: $recipeId, name: $name, unit: $unit, amount: $amount, sectionId: $sectionId)';
   }
 
   @override
@@ -218,7 +238,8 @@ class _$_Ingredient implements _Ingredient {
             const DeepCollectionEquality().equals(other.recipeId, recipeId) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.unit, unit) &&
-            const DeepCollectionEquality().equals(other.amount, amount));
+            const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality().equals(other.sectionId, sectionId));
   }
 
   @override
@@ -228,7 +249,8 @@ class _$_Ingredient implements _Ingredient {
       const DeepCollectionEquality().hash(recipeId),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(unit),
-      const DeepCollectionEquality().hash(amount));
+      const DeepCollectionEquality().hash(amount),
+      const DeepCollectionEquality().hash(sectionId));
 
   @JsonKey(ignore: true)
   @override
@@ -247,7 +269,8 @@ abstract class _Ingredient implements Ingredient {
       @HiveField(1) required String recipeId,
       @HiveField(2) required String name,
       @HiveField(3) String? unit,
-      @HiveField(4) double? amount}) = _$_Ingredient;
+      @HiveField(4) double? amount,
+      @HiveField(5) String? sectionId}) = _$_Ingredient;
 
   factory _Ingredient.fromJson(Map<String, dynamic> json) =
       _$_Ingredient.fromJson;
@@ -267,6 +290,9 @@ abstract class _Ingredient implements Ingredient {
   @override
   @HiveField(4)
   double? get amount;
+  @override
+  @HiveField(5)
+  String? get sectionId;
   @override
   @JsonKey(ignore: true)
   _$IngredientCopyWith<_Ingredient> get copyWith =>

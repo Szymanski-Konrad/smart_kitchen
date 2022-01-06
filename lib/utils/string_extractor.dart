@@ -7,7 +7,7 @@ class StringExtractor {
     final splitted = input.trim().split(' ');
     final productMetadata = IngredientMetadata(name: '');
     final amount = double.tryParse(splitted.first);
-    productMetadata.amount = amount ?? 1;
+    productMetadata.amount = amount;
     if (amount != null) {
       splitted[0] = '';
       final matches = splitted[1].bestMatch(ParserValues.units);

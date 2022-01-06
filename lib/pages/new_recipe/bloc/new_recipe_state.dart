@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:smart_kitchen/models/ingredient/ingredient.dart';
 import 'package:smart_kitchen/models/recipe/category.dart';
 import 'package:smart_kitchen/models/recipe/recipe.dart';
+import 'package:smart_kitchen/models/recipe/recipe_section.dart';
 import 'package:smart_kitchen/models/step/recipe_step.dart';
 import 'package:uuid/uuid.dart';
 
@@ -20,6 +21,7 @@ class NewRecipeState with _$NewRecipeState {
     @Default(<String, double>{}) Map<String, double> votes,
     required List<Ingredient> ingredients,
     required List<RecipeStep> steps,
+    @Default(<RecipeSection>[]) List<RecipeSection> sections,
     @Default(false) bool isSaving,
     @Default(false) bool isEditing,
   }) = _NewRecipeState;
@@ -32,6 +34,7 @@ class NewRecipeState with _$NewRecipeState {
         steps: [],
         isSaving: false,
         isEditing: false,
+        sections: [],
       );
 
   static NewRecipeState fromRecipe(Recipe recipe) => NewRecipeState(
@@ -47,6 +50,7 @@ class NewRecipeState with _$NewRecipeState {
         notes: recipe.notes ?? '',
         rating: recipe.rating,
         votes: recipe.votes,
+        sections: recipe.sections,
       );
 }
 
@@ -74,5 +78,15 @@ extension NewRecipeStateExtension on NewRecipeState {
     return ingredients
         .where((element) => !usedIds.contains(element.id))
         .toList();
+  }
+
+  List<Ingredient> sectionIngredients(String? sectionId) {
+    return ingredients
+        .where((element) => element.sectionId == sectionId)
+        .toList();
+  }
+
+  List<RecipeStep> sectionSteps(String? sectionId) {
+    return steps.where((element) => element.sectionId == sectionId).toList();
   }
 }

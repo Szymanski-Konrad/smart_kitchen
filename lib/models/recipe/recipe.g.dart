@@ -27,13 +27,14 @@ class RecipeAdapter extends TypeAdapter<_$_Recipe> {
       votes: (fields[7] as Map).cast<String, double>(),
       ingredients: (fields[8] as List).cast<Ingredient>(),
       steps: (fields[9] as List).cast<RecipeStep>(),
+      sections: (fields[10] as List).cast<RecipeSection>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_Recipe obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -53,7 +54,9 @@ class RecipeAdapter extends TypeAdapter<_$_Recipe> {
       ..writeByte(8)
       ..write(obj.ingredients)
       ..writeByte(9)
-      ..write(obj.steps);
+      ..write(obj.steps)
+      ..writeByte(10)
+      ..write(obj.sections);
   }
 
   @override
@@ -89,6 +92,10 @@ _$_Recipe _$$_RecipeFromJson(Map<String, dynamic> json) => _$_Recipe(
       steps: (json['steps'] as List<dynamic>)
           .map((e) => RecipeStep.fromJson(e as Map<String, dynamic>))
           .toList(),
+      sections: (json['sections'] as List<dynamic>?)
+              ?.map((e) => RecipeSection.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <RecipeSection>[],
     );
 
 Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
@@ -102,6 +109,7 @@ Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
       'votes': instance.votes,
       'ingredients': instance.ingredients,
       'steps': instance.steps,
+      'sections': instance.sections,
     };
 
 const _$CategoryEnumMap = {

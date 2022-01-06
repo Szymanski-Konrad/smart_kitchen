@@ -1,9 +1,10 @@
 import 'package:hive/hive.dart';
+import 'package:smart_kitchen/app/resources/hive_types.dart';
 import 'package:smart_kitchen/app/resources/strings.dart';
 
 part 'category.g.dart';
 
-@HiveType(typeId: 4, adapterName: 'CategoryAdapter')
+@HiveType(typeId: HiveTypeId.h4, adapterName: 'CategoryAdapter')
 enum Category {
   @HiveField(0)
   breakfast,

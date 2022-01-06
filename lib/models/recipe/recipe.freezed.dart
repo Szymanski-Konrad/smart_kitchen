@@ -31,7 +31,8 @@ class _$RecipeTearOff {
       @HiveField(6) double rating = 0.0,
       @HiveField(7) Map<String, double> votes = const <String, double>{},
       @HiveField(8) required List<Ingredient> ingredients,
-      @HiveField(9) required List<RecipeStep> steps}) {
+      @HiveField(9) required List<RecipeStep> steps,
+      @HiveField(10) List<RecipeSection> sections = const <RecipeSection>[]}) {
     return _Recipe(
       id: id,
       name: name,
@@ -43,6 +44,7 @@ class _$RecipeTearOff {
       votes: votes,
       ingredients: ingredients,
       steps: steps,
+      sections: sections,
     );
   }
 
@@ -76,6 +78,8 @@ mixin _$Recipe {
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
   @HiveField(9)
   List<RecipeStep> get steps => throw _privateConstructorUsedError;
+  @HiveField(10)
+  List<RecipeSection> get sections => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -96,7 +100,8 @@ abstract class $RecipeCopyWith<$Res> {
       @HiveField(6) double rating,
       @HiveField(7) Map<String, double> votes,
       @HiveField(8) List<Ingredient> ingredients,
-      @HiveField(9) List<RecipeStep> steps});
+      @HiveField(9) List<RecipeStep> steps,
+      @HiveField(10) List<RecipeSection> sections});
 }
 
 /// @nodoc
@@ -119,6 +124,7 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
     Object? votes = freezed,
     Object? ingredients = freezed,
     Object? steps = freezed,
+    Object? sections = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -161,6 +167,10 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
               as List<RecipeStep>,
+      sections: sections == freezed
+          ? _value.sections
+          : sections // ignore: cast_nullable_to_non_nullable
+              as List<RecipeSection>,
     ));
   }
 }
@@ -180,7 +190,8 @@ abstract class _$RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       @HiveField(6) double rating,
       @HiveField(7) Map<String, double> votes,
       @HiveField(8) List<Ingredient> ingredients,
-      @HiveField(9) List<RecipeStep> steps});
+      @HiveField(9) List<RecipeStep> steps,
+      @HiveField(10) List<RecipeSection> sections});
 }
 
 /// @nodoc
@@ -204,6 +215,7 @@ class __$RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
     Object? votes = freezed,
     Object? ingredients = freezed,
     Object? steps = freezed,
+    Object? sections = freezed,
   }) {
     return _then(_Recipe(
       id: id == freezed
@@ -246,13 +258,17 @@ class __$RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
               as List<RecipeStep>,
+      sections: sections == freezed
+          ? _value.sections
+          : sections // ignore: cast_nullable_to_non_nullable
+              as List<RecipeSection>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: 0, adapterName: 'RecipeAdapter')
+@HiveType(typeId: HiveTypeId.h0, adapterName: 'RecipeAdapter')
 class _$_Recipe implements _Recipe {
   _$_Recipe(
       {@HiveField(0) required this.id,
@@ -264,7 +280,8 @@ class _$_Recipe implements _Recipe {
       @HiveField(6) this.rating = 0.0,
       @HiveField(7) this.votes = const <String, double>{},
       @HiveField(8) required this.ingredients,
-      @HiveField(9) required this.steps});
+      @HiveField(9) required this.steps,
+      @HiveField(10) this.sections = const <RecipeSection>[]});
 
   factory _$_Recipe.fromJson(Map<String, dynamic> json) =>
       _$$_RecipeFromJson(json);
@@ -301,10 +318,14 @@ class _$_Recipe implements _Recipe {
   @override
   @HiveField(9)
   final List<RecipeStep> steps;
+  @JsonKey()
+  @override
+  @HiveField(10)
+  final List<RecipeSection> sections;
 
   @override
   String toString() {
-    return 'Recipe(id: $id, name: $name, category: $category, imagePath: $imagePath, notes: $notes, userId: $userId, rating: $rating, votes: $votes, ingredients: $ingredients, steps: $steps)';
+    return 'Recipe(id: $id, name: $name, category: $category, imagePath: $imagePath, notes: $notes, userId: $userId, rating: $rating, votes: $votes, ingredients: $ingredients, steps: $steps, sections: $sections)';
   }
 
   @override
@@ -322,7 +343,8 @@ class _$_Recipe implements _Recipe {
             const DeepCollectionEquality().equals(other.votes, votes) &&
             const DeepCollectionEquality()
                 .equals(other.ingredients, ingredients) &&
-            const DeepCollectionEquality().equals(other.steps, steps));
+            const DeepCollectionEquality().equals(other.steps, steps) &&
+            const DeepCollectionEquality().equals(other.sections, sections));
   }
 
   @override
@@ -337,7 +359,8 @@ class _$_Recipe implements _Recipe {
       const DeepCollectionEquality().hash(rating),
       const DeepCollectionEquality().hash(votes),
       const DeepCollectionEquality().hash(ingredients),
-      const DeepCollectionEquality().hash(steps));
+      const DeepCollectionEquality().hash(steps),
+      const DeepCollectionEquality().hash(sections));
 
   @JsonKey(ignore: true)
   @override
@@ -361,7 +384,8 @@ abstract class _Recipe implements Recipe {
       @HiveField(6) double rating,
       @HiveField(7) Map<String, double> votes,
       @HiveField(8) required List<Ingredient> ingredients,
-      @HiveField(9) required List<RecipeStep> steps}) = _$_Recipe;
+      @HiveField(9) required List<RecipeStep> steps,
+      @HiveField(10) List<RecipeSection> sections}) = _$_Recipe;
 
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$_Recipe.fromJson;
 
@@ -395,6 +419,9 @@ abstract class _Recipe implements Recipe {
   @override
   @HiveField(9)
   List<RecipeStep> get steps;
+  @override
+  @HiveField(10)
+  List<RecipeSection> get sections;
   @override
   @JsonKey(ignore: true)
   _$RecipeCopyWith<_Recipe> get copyWith => throw _privateConstructorUsedError;

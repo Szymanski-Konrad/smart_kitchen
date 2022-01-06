@@ -10,6 +10,7 @@ import 'package:smart_kitchen/models/recipe/recipe.dart';
 import 'package:smart_kitchen/pages/recipes/bloc/recipes_cubit.dart';
 import 'package:smart_kitchen/pages/recipes/bloc/recipes_state.dart';
 import 'package:smart_kitchen/utils/ui/category_chips.dart';
+import 'package:smart_kitchen/utils/ui/page_title.dart';
 import 'package:smart_kitchen/utils/ui/recipe_card.dart';
 import 'package:smart_kitchen/utils/ui/search_field.dart';
 import 'package:smart_kitchen/utils/ui/standard_text_field.dart';
@@ -38,6 +39,7 @@ class RecipesPage extends StatelessWidget {
     return BlocBuilder<RecipesCubit, RecipesState>(
       builder: (context, state) {
         return Scaffold(
+          appBar: PageFactory.pageTitle(title: Strings.recipes),
           body: _buildContent(context, state, cubit),
         );
       },
@@ -87,7 +89,7 @@ class RecipesPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: const Icon(
-        Icons.more_vert,
+        Icons.more_vert_rounded,
         color: ColorPalette.green,
         size: 26,
       ),

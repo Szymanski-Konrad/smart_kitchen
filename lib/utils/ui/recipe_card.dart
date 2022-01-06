@@ -36,7 +36,7 @@ class RecipeCard extends StatelessWidget {
                 children: [
                   RecipeName(name: recipe.name),
                   Spacings.s8,
-                  RecipeRating(rating: recipe.formattedRating),
+                  RecipeRating(rating: recipe.rating),
                 ],
               ),
             ),

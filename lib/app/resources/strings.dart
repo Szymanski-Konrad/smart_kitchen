@@ -54,6 +54,7 @@ abstract class Strings {
 
   // Recipe details page
   static const String ingredients = 'Składniki';
+  static const String sections = 'Sekcje';
   static const String cookSteps = 'Przygotowanie';
   static const String rating = 'Ocena';
   static const String rate = 'Oceń';
@@ -89,7 +90,7 @@ abstract class Strings {
   static const String notes = 'Notatki';
   static const String fromLibrary = 'Galeria';
   static const String fromAparat = 'Aparat';
-  static const String selectPhoto = 'Wybierz obraz';
+  static const String photoOptions = 'Wybierz opcję';
   static const String addPhoto = 'Dodaj zdjęcie';
   static const String replacePhoto = 'Zmień zdjęcie';
   static const String removePhoto = 'Usuń zdjęcie';
@@ -98,12 +99,15 @@ abstract class Strings {
   static const String notesHint = 'Podaj notatki do przepisu (opcjonalnie)';
   static const String emptyIngredientsList = 'Lista składników jest pusta';
   static const String emptyRecipeStepsList = 'Lista kroków jest pusta';
+  static const String section = 'sekcja';
   static const String ingredient = 'składnik';
   static const String cookStep = 'krok';
   static const String newIngredientHint = 'Wprowadź nowy składnik';
   static const String editIngredient = 'Edytuj składnik';
   static const String newCookStepHint = 'Wprowadź kolejny etap przygotowania';
   static const String editCookStep = 'Edytuj etap';
+  static const String info = 'Informacje';
+  static const String ingredientsAndSteps = 'Sładniki & kroki';
 
   // New recipe step
   static const String editRecipeStepContent = 'Edytuj opis';

@@ -22,13 +22,14 @@ class RecipeStepAdapter extends TypeAdapter<_$_RecipeStep> {
       content: fields[2] as String,
       timers: (fields[3] as Map).cast<String, int>(),
       ingredients: (fields[4] as List).cast<String>(),
+      sectionId: fields[5] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_RecipeStep obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class RecipeStepAdapter extends TypeAdapter<_$_RecipeStep> {
       ..writeByte(3)
       ..write(obj.timers)
       ..writeByte(4)
-      ..write(obj.ingredients);
+      ..write(obj.ingredients)
+      ..writeByte(5)
+      ..write(obj.sectionId);
   }
 
   @override
@@ -69,6 +72,7 @@ _$_RecipeStep _$$_RecipeStepFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           const <String>[],
+      sectionId: json['sectionId'] as String?,
     );
 
 Map<String, dynamic> _$$_RecipeStepToJson(_$_RecipeStep instance) =>
@@ -78,4 +82,5 @@ Map<String, dynamic> _$$_RecipeStepToJson(_$_RecipeStep instance) =>
       'content': instance.content,
       'timers': instance.timers,
       'ingredients': instance.ingredients,
+      'sectionId': instance.sectionId,
     };

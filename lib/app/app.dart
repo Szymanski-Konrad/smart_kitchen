@@ -137,11 +137,11 @@ class App extends StatelessWidget {
         //
         //
         // ),
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-        ],
-        supportedLocales: AppLocalizations.supportedLocales,
+        // localizationsDelegates: const [
+        //   AppLocalizations.delegate,
+        //   GlobalMaterialLocalizations.delegate,
+        // ],
+        // supportedLocales: AppLocalizations.supportedLocales,
         home: const PageNavigator(),
       ),
     );

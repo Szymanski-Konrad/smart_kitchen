@@ -28,6 +28,7 @@ class _$NewRecipeStateTearOff {
       Map<String, double> votes = const <String, double>{},
       required List<Ingredient> ingredients,
       required List<RecipeStep> steps,
+      List<RecipeSection> sections = const <RecipeSection>[],
       bool isSaving = false,
       bool isEditing = false}) {
     return _NewRecipeState(
@@ -41,6 +42,7 @@ class _$NewRecipeStateTearOff {
       votes: votes,
       ingredients: ingredients,
       steps: steps,
+      sections: sections,
       isSaving: isSaving,
       isEditing: isEditing,
     );
@@ -62,6 +64,7 @@ mixin _$NewRecipeState {
   Map<String, double> get votes => throw _privateConstructorUsedError;
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
   List<RecipeStep> get steps => throw _privateConstructorUsedError;
+  List<RecipeSection> get sections => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get isEditing => throw _privateConstructorUsedError;
 
@@ -86,6 +89,7 @@ abstract class $NewRecipeStateCopyWith<$Res> {
       Map<String, double> votes,
       List<Ingredient> ingredients,
       List<RecipeStep> steps,
+      List<RecipeSection> sections,
       bool isSaving,
       bool isEditing});
 }
@@ -111,6 +115,7 @@ class _$NewRecipeStateCopyWithImpl<$Res>
     Object? votes = freezed,
     Object? ingredients = freezed,
     Object? steps = freezed,
+    Object? sections = freezed,
     Object? isSaving = freezed,
     Object? isEditing = freezed,
   }) {
@@ -155,6 +160,10 @@ class _$NewRecipeStateCopyWithImpl<$Res>
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
               as List<RecipeStep>,
+      sections: sections == freezed
+          ? _value.sections
+          : sections // ignore: cast_nullable_to_non_nullable
+              as List<RecipeSection>,
       isSaving: isSaving == freezed
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
@@ -185,6 +194,7 @@ abstract class _$NewRecipeStateCopyWith<$Res>
       Map<String, double> votes,
       List<Ingredient> ingredients,
       List<RecipeStep> steps,
+      List<RecipeSection> sections,
       bool isSaving,
       bool isEditing});
 }
@@ -212,6 +222,7 @@ class __$NewRecipeStateCopyWithImpl<$Res>
     Object? votes = freezed,
     Object? ingredients = freezed,
     Object? steps = freezed,
+    Object? sections = freezed,
     Object? isSaving = freezed,
     Object? isEditing = freezed,
   }) {
@@ -256,6 +267,10 @@ class __$NewRecipeStateCopyWithImpl<$Res>
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
               as List<RecipeStep>,
+      sections: sections == freezed
+          ? _value.sections
+          : sections // ignore: cast_nullable_to_non_nullable
+              as List<RecipeSection>,
       isSaving: isSaving == freezed
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
@@ -282,6 +297,7 @@ class _$_NewRecipeState implements _NewRecipeState {
       this.votes = const <String, double>{},
       required this.ingredients,
       required this.steps,
+      this.sections = const <RecipeSection>[],
       this.isSaving = false,
       this.isEditing = false});
 
@@ -312,6 +328,9 @@ class _$_NewRecipeState implements _NewRecipeState {
   final List<RecipeStep> steps;
   @JsonKey()
   @override
+  final List<RecipeSection> sections;
+  @JsonKey()
+  @override
   final bool isSaving;
   @JsonKey()
   @override
@@ -319,7 +338,7 @@ class _$_NewRecipeState implements _NewRecipeState {
 
   @override
   String toString() {
-    return 'NewRecipeState(id: $id, uid: $uid, name: $name, category: $category, imagePath: $imagePath, notes: $notes, rating: $rating, votes: $votes, ingredients: $ingredients, steps: $steps, isSaving: $isSaving, isEditing: $isEditing)';
+    return 'NewRecipeState(id: $id, uid: $uid, name: $name, category: $category, imagePath: $imagePath, notes: $notes, rating: $rating, votes: $votes, ingredients: $ingredients, steps: $steps, sections: $sections, isSaving: $isSaving, isEditing: $isEditing)';
   }
 
   @override
@@ -338,6 +357,7 @@ class _$_NewRecipeState implements _NewRecipeState {
             const DeepCollectionEquality()
                 .equals(other.ingredients, ingredients) &&
             const DeepCollectionEquality().equals(other.steps, steps) &&
+            const DeepCollectionEquality().equals(other.sections, sections) &&
             const DeepCollectionEquality().equals(other.isSaving, isSaving) &&
             const DeepCollectionEquality().equals(other.isEditing, isEditing));
   }
@@ -355,6 +375,7 @@ class _$_NewRecipeState implements _NewRecipeState {
       const DeepCollectionEquality().hash(votes),
       const DeepCollectionEquality().hash(ingredients),
       const DeepCollectionEquality().hash(steps),
+      const DeepCollectionEquality().hash(sections),
       const DeepCollectionEquality().hash(isSaving),
       const DeepCollectionEquality().hash(isEditing));
 
@@ -376,6 +397,7 @@ abstract class _NewRecipeState implements NewRecipeState {
       Map<String, double> votes,
       required List<Ingredient> ingredients,
       required List<RecipeStep> steps,
+      List<RecipeSection> sections,
       bool isSaving,
       bool isEditing}) = _$_NewRecipeState;
 
@@ -399,6 +421,8 @@ abstract class _NewRecipeState implements NewRecipeState {
   List<Ingredient> get ingredients;
   @override
   List<RecipeStep> get steps;
+  @override
+  List<RecipeSection> get sections;
   @override
   bool get isSaving;
   @override

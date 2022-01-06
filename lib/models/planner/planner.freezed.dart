@@ -144,7 +144,7 @@ class __$PlannerDayCopyWithImpl<$Res> extends _$PlannerDayCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: 3, adapterName: 'PlannerDayAdapter')
+@HiveType(typeId: HiveTypeId.h3, adapterName: 'PlannerDayAdapter')
 class _$_PlannerDay implements _PlannerDay {
   _$_PlannerDay(
       {@HiveField(0) required this.id,

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:smart_kitchen/app/resources/color_palette.dart';
 import 'package:smart_kitchen/app/resources/constants.dart';
 import 'package:smart_kitchen/app/resources/text_styles.dart';
 import 'package:smart_kitchen/models/recipe/recipe.dart';
@@ -22,19 +23,29 @@ class RecipeName extends StatelessWidget {
 class RecipeRating extends StatelessWidget {
   const RecipeRating({Key? key, required this.rating}) : super(key: key);
 
-  final String rating;
+  final double rating;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(Icons.star),
+        Icon(
+          Icons.star,
+          color: _getColor,
+        ),
         Text(
-          rating,
+          rating.toStringAsFixed(2),
           style: TextStyles.recipeRating,
         ),
       ],
     );
+  }
+
+  Color get _getColor {
+    if (rating > 4.0) return Colors.yellow;
+    if (rating > 3.0) return Colors.orange;
+    if (rating > 1.0) return Colors.red;
+    return Colors.black;
   }
 }
 

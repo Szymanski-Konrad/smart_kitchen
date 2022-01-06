@@ -9,6 +9,7 @@ import 'package:smart_kitchen/features/hive/hive_database.dart';
 import 'package:smart_kitchen/models/ingredient/ingredient.dart';
 import 'package:smart_kitchen/models/recipe/category.dart';
 import 'package:smart_kitchen/models/recipe/recipe.dart';
+import 'package:smart_kitchen/models/recipe/recipe_section.dart';
 import 'package:smart_kitchen/models/step/recipe_step.dart';
 import 'package:smart_kitchen/pages/new_recipe/bloc/new_recipe_state.dart';
 import 'package:smart_kitchen/pages/recipes/bloc/recipes_cubit.dart';
@@ -56,9 +57,41 @@ class NewRecipeCubit extends GlobalCubit<NewRecipeState> {
   // Ingredients
 
   void parseIngredientInput(String input) {
-    final metadata = StringExtractor.resolveProduct(input);
-    final ingredient = Ingredient.resolved(metadata, state.id);
-    addIngredient(ingredient);
+    if (input.startsWith(':')) {
+      addSection(input.substring(1));
+    } else {
+      final metadata = StringExtractor.resolveProduct(input);
+      final sectionId = state.sections.isEmpty ? null : state.sections.last.id;
+      final ingredient = Ingredient.resolved(metadata, state.id, sectionId);
+      addIngredient(ingredient);
+    }
+  }
+
+  void addIngredient(Ingredient ingredient) {
+    final ingredients = List<Ingredient>.from(state.ingredients)
+      ..add(ingredient);
+    emit(state.copyWith(ingredients: ingredients));
+  }
+
+  void addSection(String name) {
+    if (state.sections.where((element) => element.name == name).isNotEmpty) {
+      return;
+    }
+    final section = RecipeSection.withId(name: name);
+    final sections = List<RecipeSection>.from(state.sections)..add(section);
+    emit(state.copyWith(sections: sections));
+  }
+
+  void removeSection(String sectionId) {
+    final sections = List<RecipeSection>.from(state.sections)
+      ..removeWhere((element) => element.id == sectionId);
+    final ingredients = List<Ingredient>.from(state.ingredients);
+    for (var i = 0; i < ingredients.length; i++) {
+      if (ingredients[i].sectionId == sectionId) {
+        ingredients[i] = ingredients[i].changeSectionId(null);
+      }
+    }
+    emit(state.copyWith(sections: sections, ingredients: ingredients));
   }
 
   void updateIngredientFromInput(String input, Ingredient ingredient) {
@@ -70,12 +103,6 @@ class NewRecipeCubit extends GlobalCubit<NewRecipeState> {
         unit: metadata.unit,
       ),
     );
-  }
-
-  void addIngredient(Ingredient ingredient) {
-    final ingredients = List<Ingredient>.from(state.ingredients)
-      ..add(ingredient);
-    emit(state.copyWith(ingredients: ingredients));
   }
 
   void removeIngredient(Ingredient ingredient) {

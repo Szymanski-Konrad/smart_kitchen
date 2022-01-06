@@ -22,13 +22,14 @@ class IngredientAdapter extends TypeAdapter<_$_Ingredient> {
       name: fields[2] as String,
       unit: fields[3] as String?,
       amount: fields[4] as double?,
+      sectionId: fields[5] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_Ingredient obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class IngredientAdapter extends TypeAdapter<_$_Ingredient> {
       ..writeByte(3)
       ..write(obj.unit)
       ..writeByte(4)
-      ..write(obj.amount);
+      ..write(obj.amount)
+      ..writeByte(5)
+      ..write(obj.sectionId);
   }
 
   @override
@@ -63,6 +66,7 @@ _$_Ingredient _$$_IngredientFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       unit: json['unit'] as String?,
       amount: (json['amount'] as num?)?.toDouble(),
+      sectionId: json['sectionId'] as String?,
     );
 
 Map<String, dynamic> _$$_IngredientToJson(_$_Ingredient instance) =>
@@ -72,4 +76,5 @@ Map<String, dynamic> _$$_IngredientToJson(_$_Ingredient instance) =>
       'name': instance.name,
       'unit': instance.unit,
       'amount': instance.amount,
+      'sectionId': instance.sectionId,
     };

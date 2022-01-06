@@ -26,13 +26,15 @@ class _$RecipeStepTearOff {
       @HiveField(1) required String recipeId,
       @HiveField(2) required String content,
       @HiveField(3) Map<String, int> timers = const <String, int>{},
-      @HiveField(4) List<String> ingredients = const <String>[]}) {
+      @HiveField(4) List<String> ingredients = const <String>[],
+      @HiveField(5) String? sectionId}) {
     return _RecipeStep(
       id: id,
       recipeId: recipeId,
       content: content,
       timers: timers,
       ingredients: ingredients,
+      sectionId: sectionId,
     );
   }
 
@@ -56,6 +58,8 @@ mixin _$RecipeStep {
   Map<String, int> get timers => throw _privateConstructorUsedError;
   @HiveField(4)
   List<String> get ingredients => throw _privateConstructorUsedError;
+  @HiveField(5)
+  String? get sectionId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,7 +77,8 @@ abstract class $RecipeStepCopyWith<$Res> {
       @HiveField(1) String recipeId,
       @HiveField(2) String content,
       @HiveField(3) Map<String, int> timers,
-      @HiveField(4) List<String> ingredients});
+      @HiveField(4) List<String> ingredients,
+      @HiveField(5) String? sectionId});
 }
 
 /// @nodoc
@@ -91,6 +96,7 @@ class _$RecipeStepCopyWithImpl<$Res> implements $RecipeStepCopyWith<$Res> {
     Object? content = freezed,
     Object? timers = freezed,
     Object? ingredients = freezed,
+    Object? sectionId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -113,6 +119,10 @@ class _$RecipeStepCopyWithImpl<$Res> implements $RecipeStepCopyWith<$Res> {
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      sectionId: sectionId == freezed
+          ? _value.sectionId
+          : sectionId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -128,7 +138,8 @@ abstract class _$RecipeStepCopyWith<$Res> implements $RecipeStepCopyWith<$Res> {
       @HiveField(1) String recipeId,
       @HiveField(2) String content,
       @HiveField(3) Map<String, int> timers,
-      @HiveField(4) List<String> ingredients});
+      @HiveField(4) List<String> ingredients,
+      @HiveField(5) String? sectionId});
 }
 
 /// @nodoc
@@ -148,6 +159,7 @@ class __$RecipeStepCopyWithImpl<$Res> extends _$RecipeStepCopyWithImpl<$Res>
     Object? content = freezed,
     Object? timers = freezed,
     Object? ingredients = freezed,
+    Object? sectionId = freezed,
   }) {
     return _then(_RecipeStep(
       id: id == freezed
@@ -170,20 +182,25 @@ class __$RecipeStepCopyWithImpl<$Res> extends _$RecipeStepCopyWithImpl<$Res>
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      sectionId: sectionId == freezed
+          ? _value.sectionId
+          : sectionId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: 2, adapterName: 'RecipeStepAdapter')
+@HiveType(typeId: HiveTypeId.h2, adapterName: 'RecipeStepAdapter')
 class _$_RecipeStep implements _RecipeStep {
   _$_RecipeStep(
       {@HiveField(0) required this.id,
       @HiveField(1) required this.recipeId,
       @HiveField(2) required this.content,
       @HiveField(3) this.timers = const <String, int>{},
-      @HiveField(4) this.ingredients = const <String>[]});
+      @HiveField(4) this.ingredients = const <String>[],
+      @HiveField(5) this.sectionId});
 
   factory _$_RecipeStep.fromJson(Map<String, dynamic> json) =>
       _$$_RecipeStepFromJson(json);
@@ -205,10 +222,13 @@ class _$_RecipeStep implements _RecipeStep {
   @override
   @HiveField(4)
   final List<String> ingredients;
+  @override
+  @HiveField(5)
+  final String? sectionId;
 
   @override
   String toString() {
-    return 'RecipeStep(id: $id, recipeId: $recipeId, content: $content, timers: $timers, ingredients: $ingredients)';
+    return 'RecipeStep(id: $id, recipeId: $recipeId, content: $content, timers: $timers, ingredients: $ingredients, sectionId: $sectionId)';
   }
 
   @override
@@ -221,7 +241,8 @@ class _$_RecipeStep implements _RecipeStep {
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.timers, timers) &&
             const DeepCollectionEquality()
-                .equals(other.ingredients, ingredients));
+                .equals(other.ingredients, ingredients) &&
+            const DeepCollectionEquality().equals(other.sectionId, sectionId));
   }
 
   @override
@@ -231,7 +252,8 @@ class _$_RecipeStep implements _RecipeStep {
       const DeepCollectionEquality().hash(recipeId),
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(timers),
-      const DeepCollectionEquality().hash(ingredients));
+      const DeepCollectionEquality().hash(ingredients),
+      const DeepCollectionEquality().hash(sectionId));
 
   @JsonKey(ignore: true)
   @override
@@ -250,7 +272,8 @@ abstract class _RecipeStep implements RecipeStep {
       @HiveField(1) required String recipeId,
       @HiveField(2) required String content,
       @HiveField(3) Map<String, int> timers,
-      @HiveField(4) List<String> ingredients}) = _$_RecipeStep;
+      @HiveField(4) List<String> ingredients,
+      @HiveField(5) String? sectionId}) = _$_RecipeStep;
 
   factory _RecipeStep.fromJson(Map<String, dynamic> json) =
       _$_RecipeStep.fromJson;
@@ -270,6 +293,9 @@ abstract class _RecipeStep implements RecipeStep {
   @override
   @HiveField(4)
   List<String> get ingredients;
+  @override
+  @HiveField(5)
+  String? get sectionId;
   @override
   @JsonKey(ignore: true)
   _$RecipeStepCopyWith<_RecipeStep> get copyWith =>

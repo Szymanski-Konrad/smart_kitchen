@@ -68,8 +68,6 @@ class StepsInput extends StatelessWidget {
               return RecipeStepTile(
                 index: index,
                 step: step,
-                cubit: cubit,
-                isEditable: true,
                 onMore: () => _optionsBottomSheet(context, cubit, state, step),
               );
             },

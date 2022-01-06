@@ -13,6 +13,7 @@ import 'package:smart_kitchen/models/ingredient/ingredient.dart';
 import 'package:smart_kitchen/models/planner/planner.dart';
 import 'package:smart_kitchen/models/recipe/category.dart';
 import 'package:smart_kitchen/models/recipe/recipe.dart';
+import 'package:smart_kitchen/models/recipe/recipe_section.dart';
 import 'package:smart_kitchen/models/step/recipe_step.dart';
 
 Future<void> main() async {
@@ -29,7 +30,8 @@ Future<void> main() async {
     ..registerAdapter(IngredientAdapter())
     ..registerAdapter(PlannerDayAdapter())
     ..registerAdapter(RecipeStepAdapter())
-    ..registerAdapter(CategoryAdapter());
+    ..registerAdapter(CategoryAdapter())
+    ..registerAdapter(RecipeSectionAdapter());
 
   // await HiveDatabase.clearDatabase();
   await HiveDatabase.init();
@@ -45,9 +47,4 @@ Future<void> main() async {
     () => runApp(const App()),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
-
-  // runZonedGuarded(
-  //   () => runApp(const App()),
-  //   (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
-  // );
 }
